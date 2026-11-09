@@ -2,7 +2,7 @@
 
 Repository: https://github.com/MdAbuMusa1414/PocketKhata
 
-এই project-এ actual development-এর Git history আছে এবং origin সঠিক repository-তে সেট করা। Assistant এখনও remote-এ push বা release প্রকাশ করেনি।
+এই project-এ actual development-এর Git history আছে এবং origin সঠিক repository-তে সেট করা। GitHub account সংযুক্ত হয়েছে; project-এর origin উপরের repository-তে সেট করা। নিচের ধাপগুলো ভবিষ্যৎ update-এর জন্যও ব্যবহার করা যাবে।
 
 1. Android Studio-তে project খুলে Gradle sync শেষ করো।
 2. Settings → Version Control → GitHub থেকে নিজের account browser দিয়ে login করো। Password/token চ্যাটে পাঠাবে না।

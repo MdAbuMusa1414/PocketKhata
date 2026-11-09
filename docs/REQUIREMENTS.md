@@ -24,10 +24,10 @@ Source: E-109 Final Lab Project — Instructions.pdf, four pages. The PDF says �
 | Requirement | Status / action |
 |---|---|
 | Public GitHub repository | Owner created https://github.com/MdAbuMusa1414/PocketKhata |
-| Connect from Android Studio and push from first day | Project includes local Git history and configured origin. Owner still needs to connect their account and push; no remote write access has been granted |
+| Connect from Android Studio and push from first day | Project includes local Git history and configured origin. Owner account connection and repository push permission verified; remote publication is performed through that authorized connection |
 | Regular meaningful commits | Prepared history records actual development stages; continue making meaningful commits when modifying the app |
 | README with app name, student name/ID, features, run instructions | README supplied; exact student name and ID still need to be added by owner |
-| GitHub Release v1.0 with attached APK | Signed APK supplied separately; owner must publish the release |
+| GitHub Release v1.0 with attached APK | Signed APK prepared for [Release v1.0](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.0); check the release page for the published asset |
 | Keep repository public and do not delete after submission | Ongoing owner responsibility |
 | 10–15 page PDF report with all eight sections and actual components/alternatives/reasons | Deferred by user's explicit request; not included or claimed complete |
 | Live demo and viva | Owner must run the phone checklist and understand the code |

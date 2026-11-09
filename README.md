@@ -2,6 +2,8 @@
 
 A Java + XML Android app for personal expenses, money lent, and money borrowed. Built for Mobile Application and Development Lab (0613-410).
 
+**[Download APK](https://github.com/MdAbuMusa1414/PocketKhata/releases/download/v1.0/PocketKhata-v1.0.apk) · [Release v1.0](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.0)**
+
 Repository owner: **MdAbuMusa1414**. Before submission, add your exact student name and student ID here; they have not been provided.
 
 ## Features
@@ -40,7 +42,7 @@ The Firebase Android configuration contains public client identifiers, not an ad
 ## Before final submission
 
 - Open the project and review/modify the code; understand the components for the viva.
-- Push the supplied Git history to this public repository from Android Studio. This prepared project has not been pushed by the assistant.
+- Push the supplied Git history to this public repository from Android Studio. The supplied Git history is preserved in this repository.
 - Add your student name and ID above.
 - Test on the actual phone using the checklist in `docs/PHONE-TEST-BN.md`.
 - Create GitHub Release **v1.0** and attach the signed APK. Do not upload the private signing backup.
@@ -48,3 +50,9 @@ The Firebase Android configuration contains public client identifiers, not an ad
 - Keep the repository public after submission.
 
 See `docs/REQUIREMENTS.md` for every requirement and `docs/ARCHITECTURE.md` for code and database details.
+
+## Design previews
+
+Rendered Android 12.1 layouts; dashboard uses labelled sample data, not the owner’s account.
+
+<img src="docs/previews/login.png" width="260" alt="PocketKhata login preview"> <img src="docs/previews/home-sample.png" width="260" alt="Sample PocketKhata dashboard preview">
