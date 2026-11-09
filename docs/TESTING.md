@@ -9,3 +9,9 @@
 The previews were rendered using Robolectric's Android 12.1 native graphics with clearly labelled sample data. They are not screenshots from the owner's phone. A full emulator system image exceeded the environment's available disk budget; no full Android-emulator end-to-end run is claimed.
 
 Still required: install on the owner's Android 12 / ColorOS 12.1 phone and complete `PHONE-TEST-BN.md`, especially real camera/gallery selection, dialer/share/browser intents, session persistence, keyboard interaction, and actual network transitions. Report any device-specific issue for correction before the final demo.
+
+## Version 1.1 redesign verification
+
+15 Android API 32 tests pass, including the three navigation destinations, contextual loan/expense field visibility, empty-state scroll clearance and dark system-bar icon appearance after focus. Release compilation, Android lint (zero errors) and v2/v3 signature verification passed. The signing certificate matches v1.0 for in-place updates. The package ID and Firebase schema remain unchanged. The prior 15 live Firebase checks apply to the unchanged backend; no new test accounts were added for this UI update.
+
+The owner supplied v1.0 phone screenshots showing installation, a signed-in account, expense/loan records, budget math, filters and a stored photo. The redesigned v1.1 needs a fresh device check; camera, call/share and logout/session checks still need explicit owner confirmation. No real user screenshots or private account records are published here.

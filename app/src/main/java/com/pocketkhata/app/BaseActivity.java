@@ -8,6 +8,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
@@ -17,7 +18,10 @@ public abstract class BaseActivity extends AppCompatActivity {
   protected void screen(int layout) {
     WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
     setContentView(layout);
-    WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView()).setAppearanceLightNavigationBars(true);
+    getWindow().setStatusBarColor(getColor(R.color.paper));
+    getWindow().setNavigationBarColor(getColor(R.color.white));
+    if (android.os.Build.VERSION.SDK_INT >= 29) getWindow().setNavigationBarContrastEnforced(false);
+    applySystemBarAppearance();
     View root = findViewById(R.id.root);
     ViewCompat.setOnApplyWindowInsetsListener(
         root,
@@ -27,6 +31,20 @@ public abstract class BaseActivity extends AppCompatActivity {
           v.setPadding(b.left, b.top, b.right, Math.max(b.bottom, ime.bottom));
           return i;
         });
+  }
+
+  private void applySystemBarAppearance() {
+    WindowInsetsControllerCompat bars =
+        WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+    // "Light" bars use dark icons, readable against PocketKhata's cream background.
+    bars.setAppearanceLightStatusBars(true);
+    bars.setAppearanceLightNavigationBars(true);
+  }
+
+  @Override
+  public void onWindowFocusChanged(boolean hasFocus) {
+    super.onWindowFocusChanged(hasFocus);
+    if (hasFocus) applySystemBarAppearance();
   }
 
   protected boolean requireLogin() {

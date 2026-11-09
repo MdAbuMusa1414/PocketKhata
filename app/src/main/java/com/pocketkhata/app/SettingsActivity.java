@@ -21,6 +21,19 @@ public class SettingsActivity extends BaseActivity {
     if (!requireLogin()) return;
     screen(R.layout.activity_settings);
     toolbar();
+    com.google.android.material.bottomnavigation.BottomNavigationView nav =
+        findViewById(R.id.navigation);
+    nav.setSelectedItemId(R.id.nav_settings);
+    nav.setOnItemSelectedListener(
+        item -> {
+          if (item.getItemId() == R.id.nav_settings) return true;
+          Intent i = new Intent(this, HomeActivity.class);
+          i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+          i.putExtra("open_loans", item.getItemId() == R.id.nav_loans);
+          startActivity(i);
+          finish();
+          return true;
+        });
     repo = new Repository(this);
     label(R.id.account, FirebaseAuth.getInstance().getCurrentUser().getEmail());
     long budget = Prefs.user(this).getLong("budget", 0);
@@ -92,9 +105,9 @@ public class SettingsActivity extends BaseActivity {
                         + YearMonth.now()
                         + "\nSpent this month: "
                         + Money.format(s.spent)
-                        + "\nOutstanding to collect: "
+                        + "\nLoan given (not paid back): "
                         + Money.format(s.lent)
-                        + "\nOutstanding to repay: "
+                        + "\nLoan taken (not paid back): "
                         + Money.format(s.borrowed);
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("text/plain");

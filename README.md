@@ -2,13 +2,19 @@
 
 A Java + XML Android app for personal expenses, money lent, and money borrowed. Built for Mobile Application and Development Lab (0613-410).
 
-**[Download APK](https://github.com/MdAbuMusa1414/PocketKhata/releases/download/v1.0/PocketKhata-v1.0.apk) · [Release v1.0](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.0)**
+**[Download APK](https://github.com/MdAbuMusa1414/PocketKhata/releases/download/v1.1/PocketKhata-v1.1.apk) · [Release v1.1](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.1)**
 
 Repository owner: **MdAbuMusa1414**. Before submission, add your exact student name and student ID here; they have not been provided.
 
+## Version 1.1 design
+
+Navy/blue/amber theme, adaptive notebook icon, Home/Loans/Settings navigation, a fully scrolling dashboard, contextual Expense / Give a Loan / Take a Loan forms, a fixed Save button and optional photo/contact details behind a separate control. The original v1.0 Release remains available for the course requirement.
+
+Install 1.1 over the original app to preserve data: the package ID, Firebase data structure, preference keys and signing identity are unchanged.
+
 ## Features
 
-- Seven Activities: Splash, Login, Register, Home, Add/Edit, Entry Details, Settings.
+- Seven Activities: Splash, Login, Register, Home, Add/Edit, Entry Details, Settings. Home also provides a Loans tab.
 - Firebase Authentication: register, login, password reset, logout, persistent login.
 - Private Firebase Realtime Database records under `users/{uid}/entries/{entryId}`, with live listeners.
 - Create, view, edit and delete Expense, Lent and Borrowed entries.

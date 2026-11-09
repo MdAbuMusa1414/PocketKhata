@@ -41,7 +41,10 @@ public class EntryAdapter extends RecyclerView.Adapter<EntryAdapter.Holder> {
     }
     h.meta.setText((e.getPerson().isEmpty() ? e.getCategory() : e.getPerson()) + " · " + date);
     h.amount.setText(Money.format(e.getAmountPaisa()));
-    h.type.setText(e.isLoan() && e.isSettled() ? "Settled · " + e.getType() : e.getType());
+    h.type.setText(
+        e.isLoan() && e.isSettled()
+            ? "Paid · " + Labels.type(e.getType())
+            : Labels.type(e.getType()));
     h.icon.setImageResource(
         "Lent".equals(e.getType())
             ? R.drawable.ic_arrow_out

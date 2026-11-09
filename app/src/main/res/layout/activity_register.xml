@@ -1,25 +1,28 @@
 <?xml version="1.0" ?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/root" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/paper">
-    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="64dp" app:title="Start a fresh page" app:titleTextColor="@color/ink" app:navigationIcon="@drawable/ic_back"/>
-    <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
-            <TextView style="@style/PKTitle" android:text="Make room for better money habits."/>
-            <TextView style="@style/PKMuted" android:text="Create your personal PocketKhata account." android:layout_marginTop="10dp"/>
-            <com.google.android.material.textfield.TextInputLayout android:id="@+id/nameLayout" style="@style/PKField" android:hint="Your name">
-                <com.google.android.material.textfield.TextInputEditText android:id="@+id/name" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPersonName" android:maxLength="50"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout android:id="@+id/emailLayout" style="@style/PKField" android:hint="Email address">
-                <com.google.android.material.textfield.TextInputEditText android:id="@+id/email" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textEmailAddress"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout android:id="@+id/passwordLayout" style="@style/PKField" android:hint="Password · at least 8 characters" app:endIconMode="password_toggle">
-                <com.google.android.material.textfield.TextInputEditText android:id="@+id/password" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout android:id="@+id/confirmLayout" style="@style/PKField" android:hint="Confirm password" app:endIconMode="password_toggle">
-                <com.google.android.material.textfield.TextInputEditText android:id="@+id/confirm" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.button.MaterialButton app:cornerRadius="16dp" android:id="@+id/create" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Create my khata"/>
-            <ProgressBar android:id="@+id/progress" android:layout_width="32dp" android:layout_height="32dp" android:layout_gravity="center" android:visibility="gone"/>
-            <TextView style="@style/PKMuted" android:text="An internet connection is needed to create your account." android:layout_marginTop="16dp"/>
+    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="60dp" app:title="Create Account" app:titleTextAppearance="@style/PKToolbarTitle" app:navigationIcon="@drawable/ic_back"/>
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true" android:clipToPadding="false">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+            <TextView style="@style/PKTitle" android:text="A fresh start."/>
+            <TextView style="@style/PKMuted" android:text="Your own account for expenses and loans." android:layout_marginTop="8dp"/>
+            <com.google.android.material.card.MaterialCardView style="@style/PKCard" android:layout_marginTop="22dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/nameLayout" style="@style/PKField" android:hint="Your Name">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/name" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPersonName" android:maxLength="50"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/emailLayout" style="@style/PKField" android:hint="Email">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/email" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textEmailAddress"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/passwordLayout" style="@style/PKField" android:hint="Password · 8 or more characters" app:endIconMode="password_toggle">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/password" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/confirmLayout" style="@style/PKField" android:hint="Confirm Password" app:endIconMode="password_toggle">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/confirm" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/create" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Create Account" app:cornerRadius="14dp"/>
+                    <ProgressBar android:id="@+id/progress" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:visibility="gone"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

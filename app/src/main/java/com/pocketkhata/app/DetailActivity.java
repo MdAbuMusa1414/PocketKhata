@@ -81,28 +81,41 @@ public class DetailActivity extends BaseActivity {
   }
 
   private void render() {
-    label(R.id.typeLabel, entry.getType().toUpperCase(java.util.Locale.ROOT));
+    label(R.id.typeLabel, Labels.type(entry.getType()));
     label(R.id.detailAmount, Money.format(entry.getAmountPaisa()));
     label(R.id.detailTitle, entry.getTitle());
-    label(R.id.detailMeta, entry.getCategory() + " · " + entry.getDate());
+    label(R.id.detailMeta, (entry.isLoan() ? "" : entry.getCategory() + " · ") + entry.getDate());
     label(
         R.id.detailStatus,
         entry.isLoan()
-            ? (entry.isSettled() ? "✓ Settled" : "● Outstanding")
-            : "Recorded in your expenses");
+            ? (entry.isSettled() ? "Paid back" : "Not paid back yet")
+            : "Saved in your expenses");
     label(
         R.id.detailPerson,
         entry.getPerson().isEmpty()
-            ? "No contact added"
+            ? entry.getPhone()
             : entry.getPerson() + (entry.getPhone().isEmpty() ? "" : "\n" + entry.getPhone()));
     label(R.id.detailNote, entry.getNote().isEmpty() ? "No additional note." : entry.getNote());
+    findViewById(R.id.detailPerson)
+        .setVisibility(
+            entry.getPerson().isEmpty() && entry.getPhone().isEmpty() ? View.GONE : View.VISIBLE);
+    findViewById(R.id.detailNote)
+        .setVisibility(entry.getNote().isEmpty() ? View.GONE : View.VISIBLE);
+    findViewById(R.id.detailsCard)
+        .setVisibility(
+            entry.getPerson().isEmpty()
+                    && entry.getPhone().isEmpty()
+                    && entry.getNote().isEmpty()
+                    && entry.getPhoto().isEmpty()
+                ? View.GONE
+                : View.VISIBLE);
     ImageView image = findViewById(R.id.photo);
     image.setVisibility(entry.getPhoto().isEmpty() ? View.GONE : View.VISIBLE);
     if (!entry.getPhoto().isEmpty()) image.setImageBitmap(Photos.decode(entry.getPhoto()));
     findViewById(R.id.call).setVisibility(entry.getPhone().isEmpty() ? View.GONE : View.VISIBLE);
     findViewById(R.id.settle).setVisibility(entry.isLoan() ? View.VISIBLE : View.GONE);
     ((MaterialButton) findViewById(R.id.settle))
-        .setText(entry.isSettled() ? "Mark as outstanding" : "Mark as settled");
+        .setText(entry.isSettled() ? "Mark as Unpaid" : "Mark as Paid Back");
   }
 
   private void confirmDelete() {
@@ -138,14 +151,16 @@ public class DetailActivity extends BaseActivity {
     if (entry == null || updating) return;
     boolean value = !entry.isSettled();
     new MaterialAlertDialogBuilder(this)
-        .setTitle(value ? "Payment completed?" : "Reopen this loan?")
+        .setTitle(value ? "Money paid back?" : "Mark this loan as unpaid?")
         .setMessage(
             value
-                ? "Mark this amount as settled. You can reopen it later."
-                : "This amount will count as outstanding again.")
+                ? ("Lent".equals(entry.getType())
+                    ? "Confirm that you got this money back."
+                    : "Confirm that you paid this money back.")
+                : "This amount will need to be paid back again.")
         .setNegativeButton("Cancel", null)
         .setPositiveButton(
-            value ? "Mark settled" : "Reopen",
+            value ? "Yes, Paid Back" : "Mark Unpaid",
             (d, w) -> {
               updating = true;
               findViewById(R.id.settle).setEnabled(false);
@@ -157,7 +172,7 @@ public class DetailActivity extends BaseActivity {
                     updating = false;
                     findViewById(R.id.settle).setEnabled(true);
                     if (error != null) say(error);
-                    else say(value ? "Marked as settled" : "Loan reopened");
+                    else say(value ? "Marked as paid back" : "Marked as unpaid");
                   });
             })
         .show();
@@ -167,7 +182,7 @@ public class DetailActivity extends BaseActivity {
     if (entry == null) return;
     String text =
         "PocketKhata · "
-            + entry.getType()
+            + Labels.type(entry.getType())
             + "\n"
             + entry.getTitle()
             + "\n"
@@ -178,7 +193,7 @@ public class DetailActivity extends BaseActivity {
             + entry.getCategory()
             + (entry.getPerson().isEmpty() ? "" : "\nPerson: " + entry.getPerson())
             + (entry.isLoan()
-                ? "\nStatus: " + (entry.isSettled() ? "Settled" : "Outstanding")
+                ? "\nStatus: " + (entry.isSettled() ? "Paid back" : "Not paid back")
                 : "");
     Intent i = new Intent(Intent.ACTION_SEND);
     i.setType("text/plain");

@@ -61,3 +61,11 @@ Budget is a device-local per-account preference. Only Expense entries count towa
 | MaterialCardView | Plain LinearLayout | Distinct readable dashboard/ledger cards |
 | BigDecimal + integer paisa | float/double | Avoid rounding errors in money calculations |
 | Git + GitHub | GitLab / Bitbucket | Required public source history and APK Release hosting |
+
+## Version 1.1 interface
+
+`EntryFormUi` binds the record-type control to relevant fields: an Expense requires amount, purpose, category and date; Give/Take a Loan requires amount, the other person and date. Loan record titles are generated from the person’s name. Optional phone/details/photo fields are collapsed initially.
+
+`SingleViewAdapter` and `ConcatAdapter` combine the dashboard header, reusable record rows and empty state in a single RecyclerView, so the header scrolls out of the way instead of squeezing records into a short fixed area.
+
+The bottom navigation opens Home, Loans and Settings. UI labels translate the existing Firebase type strings `Expense`, `Lent`, `Borrowed`; existing account data is not migrated or rewritten during upgrade.

@@ -58,12 +58,26 @@ public class EditActivity extends BaseActivity {
         new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, CATEGORIES);
     a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     category.setAdapter(a);
-    ((RadioGroup) findViewById(R.id.type)).check(R.id.type_expense);
+    ((RadioGroup) findViewById(R.id.type))
+        .check(
+            "Lent".equals(getIntent().getStringExtra("initial_type"))
+                ? R.id.type_lent
+                : R.id.type_expense);
+    EntryFormUi.bind(findViewById(R.id.root));
+    findViewById(R.id.extrasToggle)
+        .setOnClickListener(
+            v -> {
+              boolean open = findViewById(R.id.extras).getVisibility() != View.VISIBLE;
+              findViewById(R.id.extras).setVisibility(open ? View.VISIBLE : View.GONE);
+              ((MaterialButton) v)
+                  .setText(open ? "Hide Extra Details" : "Add Photo or More Details");
+            });
+    updateForm();
     String id = getIntent().getStringExtra("entry_id");
     editing = id != null;
     if (editing) {
       ((com.google.android.material.appbar.MaterialToolbar) findViewById(R.id.toolbar))
-          .setTitle("Edit entry");
+          .setTitle("Edit Record");
       findViewById(R.id.save).setEnabled(false);
     }
     if (b != null) {
@@ -106,6 +120,9 @@ public class EditActivity extends BaseActivity {
     }
     updateDate();
     showPhoto();
+    updateForm();
+    if (b != null && b.getBoolean("extras_open", false))
+      findViewById(R.id.extras).setVisibility(View.VISIBLE);
     findViewById(R.id.date).setOnClickListener(v -> pickDate());
     findViewById(R.id.gallery)
         .setOnClickListener(
@@ -159,13 +176,21 @@ public class EditActivity extends BaseActivity {
     } catch (Exception ignored) {
     }
     photo = entry.getPhoto();
+    if (!photo.isEmpty() || !entry.getPhone().isEmpty() || !entry.getNote().isEmpty())
+      findViewById(R.id.extras).setVisibility(View.VISIBLE);
     updateDate();
     showPhoto();
+    updateForm();
+  }
+
+  private void updateForm() {
+    EntryFormUi.apply(
+        findViewById(R.id.root), ((RadioGroup) findViewById(R.id.type)).getCheckedRadioButtonId());
   }
 
   private void updateDate() {
     ((MaterialButton) findViewById(R.id.date))
-        .setText(date.format(DateTimeFormatter.ofPattern("EEEE, d MMM yyyy", Locale.ENGLISH)));
+        .setText(date.format(DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.ENGLISH)));
   }
 
   private void pickDate() {
@@ -225,6 +250,7 @@ public class EditActivity extends BaseActivity {
 
   private void showPhoto() {
     ImageView v = findViewById(R.id.photo);
+    v.setVisibility(photo.isEmpty() ? View.GONE : View.VISIBLE);
     if (photo.isEmpty()) v.setImageResource(R.drawable.ic_receipt);
     else v.setImageBitmap(Photos.decode(photo));
     findViewById(R.id.removePhoto).setVisibility(photo.isEmpty() ? View.GONE : View.VISIBLE);
@@ -232,7 +258,13 @@ public class EditActivity extends BaseActivity {
 
   private void save() {
     if (loadingPhoto || saving) return;
-    String title = input(R.id.title);
+    int typeId = ((RadioGroup) findViewById(R.id.type)).getCheckedRadioButtonId();
+    String type =
+        typeId == R.id.type_lent ? "Lent" : typeId == R.id.type_borrowed ? "Borrowed" : "Expense";
+    String title =
+        "Expense".equals(type)
+            ? input(R.id.title)
+            : ("Lent".equals(type) ? "Loan to " : "Loan from ") + input(R.id.person);
     if (title.isEmpty()) {
       error(R.id.title, "Give this entry a title");
       return;
@@ -246,12 +278,10 @@ public class EditActivity extends BaseActivity {
     }
     String phone = input(R.id.phone);
     if (!phone.isEmpty() && !phone.replaceAll("[ ()-]", "").matches("\\+?[0-9]{5,15}")) {
+      findViewById(R.id.extras).setVisibility(View.VISIBLE);
       error(R.id.phone, "Enter a valid contact number or leave it empty");
       return;
     }
-    int typeId = ((RadioGroup) findViewById(R.id.type)).getCheckedRadioButtonId();
-    String type =
-        typeId == R.id.type_lent ? "Lent" : typeId == R.id.type_borrowed ? "Borrowed" : "Expense";
     if (!"Expense".equals(type) && input(R.id.person).isEmpty()) {
       error(R.id.person, "Enter the person’s name for this loan");
       return;
@@ -264,7 +294,10 @@ public class EditActivity extends BaseActivity {
     entry.setTitle(title);
     entry.setAmountPaisa(amount);
     entry.setType(type);
-    entry.setCategory(((Spinner) findViewById(R.id.category)).getSelectedItem().toString());
+    entry.setCategory(
+        "Expense".equals(type)
+            ? ((Spinner) findViewById(R.id.category)).getSelectedItem().toString()
+            : "Other");
     entry.setDate(date.toString());
     entry.setPerson(input(R.id.person));
     entry.setPhone(phone);
@@ -305,6 +338,7 @@ public class EditActivity extends BaseActivity {
   @Override
   protected void onSaveInstanceState(@NonNull Bundle b) {
     super.onSaveInstanceState(b);
+    b.putBoolean("extras_open", findViewById(R.id.extras).getVisibility() == View.VISIBLE);
     b.putString("date", date.toString());
     b.putString("photo", photo);
     if (cameraUri != null) b.putString("camera", cameraUri.toString());

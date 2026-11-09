@@ -1,43 +1,54 @@
 <?xml version="1.0" ?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/root" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/paper">
-    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="64dp" app:title="New entry" app:titleTextColor="@color/ink" app:navigationIcon="@drawable/ic_back"/>
-    <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
-            <TextView style="@style/PKTitle" android:text="Make every taka count." android:textSize="25sp"/>
-            <TextView style="@style/PKMuted" android:text="A quick note today. A clearer picture tomorrow." android:layout_marginTop="8dp"/>
-            <TextView style="@style/PKText" android:text="Entry type" android:layout_marginTop="20dp"/>
-            <RadioGroup android:id="@+id/type" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                <com.google.android.material.radiobutton.MaterialRadioButton android:id="@+id/type_expense" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Expense" android:textSize="13sp"/>
-                <com.google.android.material.radiobutton.MaterialRadioButton android:id="@+id/type_lent" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Lent" android:textSize="13sp"/>
-                <com.google.android.material.radiobutton.MaterialRadioButton android:id="@+id/type_borrowed" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Borrowed" android:textSize="13sp"/>
-            </RadioGroup>
-            <com.google.android.material.textfield.TextInputLayout android:id="@+id/titleLayout" style="@style/PKField" android:hint="What is this for?">
-                <com.google.android.material.textfield.TextInputEditText android:id="@+id/title" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textCapSentences" android:maxLength="80"/>
-            </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="60dp" app:title="Add Record" app:titleTextAppearance="@style/PKToolbarTitle" app:navigationIcon="@drawable/ic_back"/>
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true" android:clipToPadding="false">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+            <TextView style="@style/PKMuted" android:text="Choose a record type" android:fontFamily="sans-serif-medium"/>
+            <com.google.android.material.card.MaterialCardView style="@style/PKCard" android:layout_marginTop="8dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+                    <RadioGroup android:id="@+id/type" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                        <com.google.android.material.radiobutton.MaterialRadioButton android:id="@+id/type_expense" android:layout_width="match_parent" android:layout_height="48dp" android:text="Expense"/>
+                        <com.google.android.material.radiobutton.MaterialRadioButton android:id="@+id/type_lent" android:layout_width="match_parent" android:layout_height="48dp" android:text="Give a Loan"/>
+                        <com.google.android.material.radiobutton.MaterialRadioButton android:id="@+id/type_borrowed" android:layout_width="match_parent" android:layout_height="48dp" android:text="Take a Loan"/>
+                    </RadioGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <TextView style="@style/PKMuted" android:id="@+id/typeHelp" android:text="You paid for something." android:layout_marginTop="8dp"/>
             <com.google.android.material.textfield.TextInputLayout android:id="@+id/amountLayout" style="@style/PKField" android:hint="Amount (BDT)">
                 <com.google.android.material.textfield.TextInputEditText android:id="@+id/amount" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/>
             </com.google.android.material.textfield.TextInputLayout>
-            <TextView style="@style/PKText" android:text="Category" android:layout_marginTop="16dp"/>
-            <Spinner android:id="@+id/category" android:layout_width="match_parent" android:layout_height="48dp"/>
-            <com.google.android.material.button.MaterialButton app:cornerRadius="16dp" android:id="@+id/date" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Choose date" style="@style/Widget.Material3.Button.OutlinedButton"/>
-            <com.google.android.material.textfield.TextInputLayout android:id="@+id/personLayout" style="@style/PKField" android:hint="Person / shop name (optional)">
+            <com.google.android.material.textfield.TextInputLayout android:id="@+id/titleLayout" style="@style/PKField" android:hint="What did you pay for?">
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/title" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textCapSentences" android:maxLength="80"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout android:id="@+id/personLayout" style="@style/PKField" android:hint="Name">
                 <com.google.android.material.textfield.TextInputEditText android:id="@+id/person" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPersonName" android:maxLength="60"/>
             </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout android:id="@+id/phoneLayout" style="@style/PKField" android:hint="Contact number (optional)">
-                <com.google.android.material.textfield.TextInputEditText android:id="@+id/phone" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="phone" android:maxLength="20"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <TextView style="@style/PKMuted" android:text="Save a contact to call about a payment or repayment. Phone numbers stay in your private khata." android:textSize="12sp" android:layout_marginTop="6dp"/>
-            <com.google.android.material.textfield.TextInputLayout android:id="@+id/noteLayout" style="@style/PKField" android:hint="A little note (optional)">
-                <com.google.android.material.textfield.TextInputEditText android:id="@+id/note" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textCapSentences|textMultiLine" android:minLines="2" android:maxLength="500"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <TextView style="@style/PKText" android:text="Receipt or reference photo" android:layout_marginTop="20dp"/>
-            <ImageView android:id="@+id/photo" android:layout_width="match_parent" android:layout_height="180dp" android:scaleType="centerInside" android:src="@drawable/ic_receipt" android:background="@color/mint" android:contentDescription="Receipt preview" android:layout_marginTop="12dp"/>
-            <com.google.android.material.button.MaterialButton app:cornerRadius="16dp" android:id="@+id/camera" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Take photo" style="@style/Widget.Material3.Button.OutlinedButton"/>
-            <com.google.android.material.button.MaterialButton app:cornerRadius="16dp" android:id="@+id/gallery" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Choose from gallery" style="@style/Widget.Material3.Button.OutlinedButton"/>
-            <com.google.android.material.button.MaterialButton app:cornerRadius="16dp" android:id="@+id/removePhoto" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Remove photo" style="@style/Widget.Material3.Button.OutlinedButton"/>
-            <TextView style="@style/PKMuted" android:text="Receipts are resized before saving to keep your khata light." android:textSize="12sp" android:layout_marginTop="8dp"/>
-            <com.google.android.material.button.MaterialButton app:cornerRadius="16dp" android:id="@+id/save" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Save entry"/>
-            <ProgressBar android:id="@+id/progress" android:layout_width="32dp" android:layout_height="32dp" android:layout_gravity="center" android:visibility="gone"/>
+            <TextView style="@style/PKMuted" android:id="@+id/categoryLabel" android:text="Category" android:layout_marginTop="16dp"/>
+            <Spinner android:id="@+id/category" android:layout_width="match_parent" android:layout_height="54dp" android:layout_marginTop="6dp" android:paddingHorizontal="12dp" android:background="@drawable/field_bg"/>
+            <TextView style="@style/PKMuted" android:text="Date" android:layout_marginTop="16dp"/>
+            <com.google.android.material.button.MaterialButton android:id="@+id/date" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Choose Date" app:cornerRadius="14dp" style="@style/Widget.Material3.Button.OutlinedButton" app:icon="@drawable/ic_calendar" app:iconGravity="textStart"/>
+            <com.google.android.material.button.MaterialButton android:id="@+id/extrasToggle" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Add Photo or More Details" app:cornerRadius="14dp" style="@style/Widget.Material3.Button.TextButton"/>
+            <LinearLayout android:id="@+id/extras" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+                <com.google.android.material.card.MaterialCardView style="@style/PKCard">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+                        <com.google.android.material.textfield.TextInputLayout android:id="@+id/phoneLayout" style="@style/PKField" android:hint="Phone Number (optional)">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/phone" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="phone" android:maxLength="20"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout android:id="@+id/noteLayout" style="@style/PKField" android:hint="Details (optional)">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/note" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textCapSentences|textMultiLine" android:minLines="2" android:maxLength="500"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <TextView style="@style/PKText" android:text="Receipt or Photo" android:layout_marginTop="18dp" android:fontFamily="sans-serif-medium"/>
+                        <ImageView android:id="@+id/photo" android:layout_width="match_parent" android:layout_height="180dp" android:visibility="gone" android:layout_marginTop="12dp" android:scaleType="centerInside" android:contentDescription="Selected receipt or photo"/>
+                        <com.google.android.material.button.MaterialButton android:id="@+id/camera" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Take Photo" app:cornerRadius="14dp" style="@style/Widget.Material3.Button.OutlinedButton"/>
+                        <com.google.android.material.button.MaterialButton android:id="@+id/gallery" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Choose Photo" app:cornerRadius="14dp" style="@style/Widget.Material3.Button.OutlinedButton"/>
+                        <com.google.android.material.button.MaterialButton android:id="@+id/removePhoto" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Remove Photo" app:cornerRadius="14dp" style="@style/Widget.Material3.Button.TextButton"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="20dp" android:paddingBottom="10dp" android:background="@color/white">
+        <com.google.android.material.button.MaterialButton android:id="@+id/save" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Save Record" app:cornerRadius="14dp"/>
+        <ProgressBar android:id="@+id/progress" android:layout_width="24dp" android:layout_height="24dp" android:layout_gravity="center" android:visibility="gone"/>
+    </LinearLayout>
 </LinearLayout>

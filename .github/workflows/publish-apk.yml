@@ -5,7 +5,7 @@ on:
   push:
     branches: [main]
     paths:
-      - distribution/PocketKhata-v1.0.apk
+      - distribution/PocketKhata-v1.1.apk
       - .github/workflows/publish-apk.yml
 
 permissions:
@@ -19,14 +19,14 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - name: Verify the exact locally tested APK
         run: |
-          printf '%s\n' 'ebec7c5eb58f999f20ea28911d369b6657a3d16a2da377feacc6aa0ff33b4fed  distribution/PocketKhata-v1.0.apk' | sha256sum --check
-      - name: Publish version 1.0
+          printf '%s\n' '8732f324dc8d4854263f1aae86bdc86aadf98c0d0c7851ead982cfc6bc95fa39  distribution/PocketKhata-v1.1.apk' | sha256sum --check
+      - name: Publish version 1.1
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if ! gh release view v1.0 --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            gh release create v1.0 --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title 'PocketKhata v1.0' --notes-file docs/RELEASE-NOTES.md
+          if ! gh release view v1.1 --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release create v1.1 --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title 'PocketKhata v1.1' --notes-file docs/RELEASE-NOTES.md
           fi
-          if ! gh release view v1.0 --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name' | grep -Fxq 'PocketKhata-v1.0.apk'; then
-            gh release upload v1.0 distribution/PocketKhata-v1.0.apk --repo "$GITHUB_REPOSITORY"
+          if ! gh release view v1.1 --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name' | grep -Fxq 'PocketKhata-v1.1.apk'; then
+            gh release upload v1.1 distribution/PocketKhata-v1.1.apk --repo "$GITHUB_REPOSITORY"
           fi

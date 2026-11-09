@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/empty" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:paddingHorizontal="24dp" android:paddingTop="24dp" android:paddingBottom="24dp">
+    <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@drawable/ic_receipt" android:contentDescription=""/>
+    <TextView style="@style/PKText" android:id="@+id/emptyTitle" android:text="No records yet" android:gravity="center" android:layout_marginTop="10dp"/>
+    <TextView style="@style/PKMuted" android:id="@+id/emptySubtitle" android:text="Tap Add Record to get started." android:gravity="center" android:layout_marginTop="6dp"/>
+</LinearLayout>

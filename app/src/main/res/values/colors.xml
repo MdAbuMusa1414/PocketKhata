@@ -1,11 +1,14 @@
 <?xml version="1.0" ?>
 <resources>
-    <color name="ink">#182F2A</color>
-    <color name="green">#156C52</color>
-    <color name="mint">#E5F2E9</color>
-    <color name="paper">#F8F8F2</color>
-    <color name="muted">#64746B</color>
-    <color name="line">#DCE4DA</color>
-    <color name="gold">#E8B75A</color>
+    <color name="ink">#17253F</color>
+    <color name="green">#365CF5</color>
+    <color name="navy">#172D55</color>
+    <color name="mint">#EAF0FF</color>
+    <color name="paper">#F3F6FC</color>
+    <color name="muted">#65748B</color>
+    <color name="line">#E0E7F2</color>
+    <color name="gold">#FFBF61</color>
     <color name="white">#FFFFFF</color>
+    <color name="warm">#FFF3DF</color>
+    <color name="red">#B93D4D</color>
 </resources>
