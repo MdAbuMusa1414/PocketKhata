@@ -29,7 +29,7 @@ public class ScreenAndPhotoTest {
   }
 
   @Test
-  public void allSevenScreensInflateOnAndroid12() {
+  public void allEightScreensInflateOnAndroid12() {
     for (int id :
         new int[] {
           R.layout.activity_splash,
@@ -38,7 +38,8 @@ public class ScreenAndPhotoTest {
           R.layout.activity_home,
           R.layout.activity_edit,
           R.layout.activity_detail,
-          R.layout.activity_settings
+          R.layout.activity_settings,
+          R.layout.activity_summary
         }) assertNotNull(LayoutInflater.from(context()).inflate(id, null).findViewById(R.id.root));
   }
 
@@ -108,6 +109,7 @@ public class ScreenAndPhotoTest {
     View header = LayoutInflater.from(c).inflate(R.layout.dashboard_header, list, false);
     ((TextView) header.findViewById(R.id.greeting)).setText("Sample data · design preview");
     ((TextView) header.findViewById(R.id.spent)).setText("৳ 3,450.50");
+    ((TextView) header.findViewById(R.id.budgetAmount)).setText("৳ 5,000.00");
     ((TextView) header.findViewById(R.id.lent)).setText("৳ 800.00");
     ((TextView) header.findViewById(R.id.borrowed)).setText("৳ 250.00");
     ((TextView) header.findViewById(R.id.budgetText)).setText("৳ 1,549.50 left of ৳ 5,000.00");
@@ -171,7 +173,7 @@ public class ScreenAndPhotoTest {
         root.findViewById(R.id.navigation);
     assertEquals(3, nav.getMenu().size());
     assertEquals("Home", nav.getMenu().findItem(R.id.nav_home).getTitle());
-    assertEquals("Records", nav.getMenu().findItem(R.id.nav_records).getTitle());
+    assertEquals("Summary", nav.getMenu().findItem(R.id.nav_summary).getTitle());
     assertEquals("Settings", nav.getMenu().findItem(R.id.nav_settings).getTitle());
   }
 
@@ -201,6 +203,27 @@ public class ScreenAndPhotoTest {
   }
 
   @Test
+  public void threeFinanceBoxesFitWithoutClippingMoney() {
+    ViewGroup header =
+        (ViewGroup) LayoutInflater.from(context()).inflate(R.layout.dashboard_header, null);
+    ((TextView) header.findViewById(R.id.spent)).setText("৳ 888,888.99");
+    header.measure(
+        View.MeasureSpec.makeMeasureSpec(720, View.MeasureSpec.EXACTLY),
+        View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+    header.layout(0, 0, 720, header.getMeasuredHeight());
+    View a = header.findViewById(R.id.expenseTotalCard),
+        b = header.findViewById(R.id.givenTotalCard),
+        c = header.findViewById(R.id.takenTotalCard);
+    assertTrue(a.getRight() <= b.getLeft());
+    assertTrue(b.getRight() <= c.getLeft());
+    TextView amount = header.findViewById(R.id.spent);
+    assertEquals(1, amount.getLineCount());
+    assertTrue(
+        amount.getLayout().getLineWidth(0)
+            <= amount.getWidth() - amount.getPaddingLeft() - amount.getPaddingRight() + 1);
+  }
+
+  @Test
   public void renderUpdatedScreens() throws Exception {
     File out = new File("build/outputs/ui-previews");
     assertTrue(out.isDirectory() || out.mkdirs());
@@ -214,15 +237,40 @@ public class ScreenAndPhotoTest {
     brand.recycle();
 
     for (String name :
-        new String[] {"login", "home-sample", "add-expense", "add-loan", "settings"}) {
+        new String[] {"login", "home-sample", "add-expense", "add-loan", "settings", "summary"}) {
       View root;
       if (name.equals("home-sample")) root = home(false);
       else {
         int id =
             name.equals("login")
                 ? R.layout.activity_login
-                : name.equals("settings") ? R.layout.activity_settings : R.layout.activity_edit;
+                : name.equals("settings")
+                    ? R.layout.activity_settings
+                    : name.equals("summary") ? R.layout.activity_summary : R.layout.activity_edit;
         root = LayoutInflater.from(context()).inflate(id, null);
+        if (name.equals("summary")) {
+          ((TextView) root.findViewById(R.id.summaryTotal)).setText("৳ 3,450.50");
+          ((TextView) root.findViewById(R.id.summaryCount)).setText("9 expenses recorded");
+          ((TextView) root.findViewById(R.id.summaryAverage)).setText("৳ 383.39");
+          ((TextView) root.findViewById(R.id.summaryTop)).setText("Food");
+          ((TextView) root.findViewById(R.id.summaryStatus))
+              .setText("Sample data · design preview");
+          root.findViewById(R.id.emptyCategories).setVisibility(View.GONE);
+          ((com.google.android.material.bottomnavigation.BottomNavigationView)
+                  root.findViewById(R.id.navigation))
+              .setSelectedItemId(R.id.nav_summary);
+          LinearLayout categories = root.findViewById(R.id.categoryList);
+          String[] names = {"Food", "Study", "Transport"};
+          long[] amounts = {180000, 85050, 80000};
+          for (int i = 0; i < names.length; i++) {
+            View row =
+                LayoutInflater.from(context())
+                    .inflate(R.layout.row_category_summary, categories, false);
+            ((TextView) row.findViewById(R.id.categoryName)).setText(names[i]);
+            ((TextView) row.findViewById(R.id.categoryAmount)).setText(Money.format(amounts[i]));
+            categories.addView(row);
+          }
+        }
         if (name.startsWith("add-")) {
           EntryFormUi.bind(root);
           ((RadioGroup) root.findViewById(R.id.type))

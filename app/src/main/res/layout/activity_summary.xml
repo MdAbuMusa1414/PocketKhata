@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/root" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/paper">
+    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="60dp" app:title="Summary" app:titleTextAppearance="@style/PKToolbarTitle" app:navigationIcon="@drawable/ic_back"/>
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+            <TextView style="@style/PKTitle" android:text="Monthly Summary"/>
+            <TextView style="@style/PKMuted" android:text="See where your money goes." android:layout_marginTop="6dp"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginTop="18dp" android:gravity="center_vertical" android:background="@drawable/field_bg">
+                <ImageButton android:id="@+id/previousMonth" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/ic_back" android:background="?attr/selectableItemBackgroundBorderless" android:contentDescription="Previous month"/>
+                <TextView style="@style/PKText" android:id="@+id/summaryMonth" android:text="November 2026" android:layout_width="0dp" android:layout_weight="1" android:gravity="center" android:fontFamily="sans-serif-medium" android:textSize="17sp"/>
+                <ImageButton android:id="@+id/nextMonth" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/ic_next" android:background="?attr/selectableItemBackgroundBorderless" android:contentDescription="Next month"/>
+            </LinearLayout>
+            <com.google.android.material.card.MaterialCardView style="@style/PKCard" android:layout_marginTop="16dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:background="@drawable/glass_panel">
+                    <TextView style="@style/PKMuted" android:text="EXPENSES" android:textSize="11sp"/>
+                    <TextView style="@style/PKTitle" android:id="@+id/summaryTotal" android:text="৳ 0.00" android:textSize="34sp" android:textColor="@color/brand" android:layout_marginTop="8dp"/>
+                    <TextView style="@style/PKMuted" android:id="@+id/summaryCount" android:text="0 expenses recorded" android:layout_marginTop="8dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp">
+                <com.google.android.material.card.MaterialCardView style="@style/PKCard" android:layout_width="0dp" android:layout_weight="1" android:layout_marginHorizontal="3dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:background="@drawable/glass_panel">
+                        <TextView style="@style/PKMuted" android:text="DAILY AVERAGE" android:textSize="10sp"/>
+                        <TextView style="@style/PKTitle" android:id="@+id/summaryAverage" android:text="৳ 0.00" android:textSize="19sp" android:layout_marginTop="8dp" android:maxLines="1" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="12sp" android:autoSizeMaxTextSize="19sp"/>
+                        <TextView style="@style/PKMuted" android:id="@+id/averageHint" android:text="Per day, up to today" android:textSize="10sp" android:layout_marginTop="6dp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView style="@style/PKCard" android:layout_width="0dp" android:layout_weight="1" android:layout_marginHorizontal="3dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:background="@drawable/glass_panel">
+                        <TextView style="@style/PKMuted" android:text="TOP CATEGORY" android:textSize="10sp"/>
+                        <TextView style="@style/PKTitle" android:id="@+id/summaryTop" android:text="No expenses" android:textSize="19sp" android:layout_marginTop="8dp" android:maxLines="1" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="12sp" android:autoSizeMaxTextSize="19sp"/>
+                        <TextView style="@style/PKMuted" android:id="@+id/topCategoryHint" android:text="Highest spending" android:textSize="10sp" android:layout_marginTop="6dp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+            <com.google.android.material.card.MaterialCardView style="@style/PKCard" android:layout_marginTop="16dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:background="@drawable/glass_panel">
+                    <TextView style="@style/PKText" android:text="By Category" android:fontFamily="sans-serif-medium" android:textSize="18sp"/>
+                    <LinearLayout android:id="@+id/categoryList" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"/>
+                    <TextView style="@style/PKMuted" android:id="@+id/emptyCategories" android:text="No expenses for this month." android:layout_marginTop="16dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <TextView style="@style/PKMuted" android:id="@+id/summaryStatus" android:text="Loading your summary…" android:layout_marginTop="16dp" android:textSize="11sp"/>
+            <com.google.android.material.button.MaterialButton android:id="@+id/shareMonth" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Share Summary"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView android:id="@+id/navigation" android:layout_width="match_parent" android:layout_height="80dp" android:background="@color/nav_surface" app:menu="@menu/bottom_nav" app:labelVisibilityMode="labeled" app:itemHorizontalTranslationEnabled="false" app:itemIconSize="24dp" app:itemPaddingTop="8dp" app:itemPaddingBottom="8dp" app:itemTextAppearanceActive="@style/PKNavigationLabel" app:itemTextAppearanceInactive="@style/PKNavigationLabel" app:itemIconTint="@color/nav_items" app:itemTextColor="@color/nav_items" app:itemActiveIndicatorStyle="@style/PKNavIndicator"/>
+</LinearLayout>

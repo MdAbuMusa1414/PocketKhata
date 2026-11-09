@@ -55,7 +55,7 @@ public class NavigationLayoutTest {
             "Material navigation must not reserve the bottom inset again",
             0,
             nav.getPaddingBottom());
-        for (int selected : new int[] {R.id.nav_home, R.id.nav_records, R.id.nav_settings}) {
+        for (int selected : new int[] {R.id.nav_home, R.id.nav_summary, R.id.nav_settings}) {
           nav.setSelectedItemId(selected);
           root.measure(
               View.MeasureSpec.makeMeasureSpec(720, View.MeasureSpec.EXACTLY),

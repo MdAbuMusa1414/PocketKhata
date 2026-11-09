@@ -4,7 +4,7 @@
     <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true" android:clipToPadding="false">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
             <com.google.android.material.card.MaterialCardView style="@style/PKCard">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:background="@drawable/glass_panel">
                     <TextView style="@style/PKMuted" android:id="@+id/typeLabel" android:text="Expense" android:textColor="@color/brand" android:textSize="12sp"/>
                     <TextView style="@style/PKTitle" android:id="@+id/detailAmount" android:text="৳ 0.00" android:textSize="38sp" android:layout_marginTop="12dp"/>
                     <TextView style="@style/PKTitle" android:id="@+id/detailTitle" android:text="Record" android:textSize="23sp" android:layout_marginTop="8dp"/>
@@ -13,16 +13,16 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView style="@style/PKCard" android:id="@+id/detailsCard" android:layout_marginTop="14dp">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:background="@drawable/glass_panel">
                     <TextView style="@style/PKText" android:id="@+id/detailPerson" android:text=""/>
                     <TextView style="@style/PKMuted" android:id="@+id/detailNote" android:text="" android:layout_marginTop="10dp"/>
                     <ImageView android:id="@+id/photo" android:layout_width="match_parent" android:layout_height="240dp" android:layout_marginTop="14dp" android:scaleType="centerInside" android:visibility="gone" android:contentDescription="Saved photo"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.button.MaterialButton android:id="@+id/settle" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Mark as Paid Back" app:cornerRadius="14dp"/>
-            <com.google.android.material.button.MaterialButton android:id="@+id/call" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Call Contact" app:cornerRadius="14dp" style="@style/Widget.Material3.Button.OutlinedButton"/>
-            <com.google.android.material.button.MaterialButton android:id="@+id/share" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Share Record" app:cornerRadius="14dp" style="@style/Widget.Material3.Button.OutlinedButton"/>
-            <com.google.android.material.button.MaterialButton android:id="@+id/edit" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Edit Record" app:cornerRadius="14dp" style="@style/Widget.Material3.Button.OutlinedButton"/>
+            <com.google.android.material.button.MaterialButton android:id="@+id/call" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Call Contact" app:cornerRadius="14dp" style="@style/PKOutlined"/>
+            <com.google.android.material.button.MaterialButton android:id="@+id/share" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Share Record" app:cornerRadius="14dp" style="@style/PKOutlined"/>
+            <com.google.android.material.button.MaterialButton android:id="@+id/edit" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Edit Record" app:cornerRadius="14dp" style="@style/PKOutlined"/>
             <com.google.android.material.button.MaterialButton android:id="@+id/delete" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Delete Record" app:cornerRadius="14dp" style="@style/Widget.Material3.Button.TextButton" android:textColor="@color/red"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -27,9 +27,10 @@ public class SettingsActivity extends BaseActivity {
     nav.setOnItemSelectedListener(
         item -> {
           if (item.getItemId() == R.id.nav_settings) return true;
-          Intent i = new Intent(this, HomeActivity.class);
+          Class<?> target =
+              item.getItemId() == R.id.nav_summary ? SummaryActivity.class : HomeActivity.class;
+          Intent i = new Intent(this, target);
           i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-          i.putExtra("open_records", item.getItemId() == R.id.nav_records);
           startActivity(i);
           finish();
           return true;

@@ -27,3 +27,9 @@ Version 1.1.1 verification complete: 17 automated tests passed; Android lint has
 ## Version 1.2 brand and Records verification
 
 20 tests pass and Android lint reports zero errors. New tests verify Settings has no duplicate header shortcut, Records includes expense/given/taken entries beyond Home's five recent matches, and search/type/paid-loan filters still work. Navigation inset tests and photo/auth/money checks continue to pass. The PK brand preview is rendered from the exact application vector. This version's physical-phone check is pending.
+
+## Version 1.3: Summary, three totals and green/gold
+
+25 tests pass; Android lint reports zero errors. Added tests verify eight screen layouts, the distinct Home/Summary/Settings navigation, selected-month expense totals/category grouping, exclusion of loans, exact daily-average rounding and readable three-card money values. Home's All filter includes the complete history. Native previews use sample data; this version still requires an actual-phone check.
+
+The palette is dark emerald and gold, including the unchanged PK geometry and dark translucent panels. Light system icons are asserted against dark backgrounds. Monthly Summary reuses the same private Firebase record subscription without changing the data schema, permissions or account identity.

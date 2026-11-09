@@ -3,40 +3,47 @@
     <TextView style="@style/PKMuted" android:id="@+id/greeting" android:text="Hello"/>
     <TextView style="@style/PKTitle" android:id="@+id/homeTitle" android:visibility="gone" android:text="My Money" android:textSize="25sp" android:layout_marginTop="6dp"/>
     <LinearLayout android:id="@+id/spendingCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/hero_bg" android:padding="16dp" android:layout_marginTop="12dp">
-        <TextView style="@style/PKMuted" android:text="SPENDING THIS MONTH" android:textColor="#F6DEE4" android:textSize="10sp" android:letterSpacing="0.1"/>
-        <TextView style="@style/PKTitle" android:id="@+id/spent" android:text="৳ 0.00" android:textSize="32sp" android:textColor="@color/white" android:layout_marginTop="5dp"/>
-        <TextView style="@style/PKMuted" android:id="@+id/monthLabel" android:visibility="gone" android:text="November 2026" android:textColor="#F6DEE4" android:textSize="12sp" android:layout_marginTop="4dp"/>
-        <com.google.android.material.progressindicator.LinearProgressIndicator android:id="@+id/budgetProgress" android:layout_width="match_parent" android:layout_height="5dp" android:layout_marginTop="10dp" android:max="100" app:indicatorColor="@color/gold" app:trackColor="#AC7584" app:trackCornerRadius="3dp"/>
-        <TextView style="@style/PKMuted" android:id="@+id/budgetText" android:text="Add your monthly budget in Settings" android:textColor="#FFFFFF" android:textSize="11sp" android:layout_marginTop="8dp"/>
+        <TextView style="@style/PKMuted" android:text="MONTHLY BUDGET" android:textColor="#DCC688" android:textSize="10sp" android:letterSpacing="0.1"/>
+        <TextView style="@style/PKTitle" android:id="@+id/budgetAmount" android:text="Not set" android:textSize="32sp" android:textColor="@color/ink" android:layout_marginTop="5dp"/>
+        <TextView style="@style/PKMuted" android:id="@+id/monthLabel" android:visibility="gone" android:text="November 2026" android:textColor="#DCC688" android:textSize="12sp" android:layout_marginTop="4dp"/>
+        <com.google.android.material.progressindicator.LinearProgressIndicator android:id="@+id/budgetProgress" android:layout_width="match_parent" android:layout_height="5dp" android:layout_marginTop="10dp" android:max="100" app:indicatorColor="@color/brand_highlight" app:trackColor="#54704B" app:trackCornerRadius="3dp"/>
+        <TextView style="@style/PKMuted" android:id="@+id/budgetText" android:text="Add your monthly budget in Settings" android:textColor="@color/ink" android:textSize="11sp" android:layout_marginTop="8dp"/>
     </LinearLayout>
-    <LinearLayout android:id="@+id/balanceCards" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp">
-        <com.google.android.material.card.MaterialCardView style="@style/PKCard" android:layout_width="0dp" android:layout_weight="1" android:layout_marginHorizontal="3dp">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView style="@style/PKMuted" android:text="LOAN GIVEN" android:textSize="10sp" android:letterSpacing="0.04"/>
-                <TextView style="@style/PKTitle" android:id="@+id/lent" android:text="৳ 0.00" android:textSize="20sp" android:layout_marginTop="4dp"/>
-                <TextView style="@style/PKMuted" android:text="To get back" android:textSize="11sp" android:layout_marginTop="2dp"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/balanceCards" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp">
+        <com.google.android.material.card.MaterialCardView android:id="@+id/expenseTotalCard" style="@style/PKCard" android:layout_width="0dp" android:layout_weight="1" android:layout_marginHorizontal="3dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="10dp" android:background="@drawable/glass_panel">
+                <TextView style="@style/PKMuted" android:text="EXPENSES" android:textSize="10sp" android:maxLines="1" android:fontFamily="sans-serif-medium"/>
+                <TextView style="@style/PKTitle" android:id="@+id/spent" android:text="৳ 0.00" android:textSize="20sp" android:fontFamily="sans-serif-condensed" android:textStyle="bold" android:layout_marginTop="6dp" android:maxLines="1" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="12sp" android:autoSizeMaxTextSize="20sp" android:autoSizeStepGranularity="1sp"/>
+                <TextView style="@style/PKMuted" android:text="This month" android:textSize="10sp" android:layout_marginTop="4dp" android:maxLines="1"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-        <com.google.android.material.card.MaterialCardView style="@style/PKCard" android:layout_width="0dp" android:layout_weight="1" android:layout_marginHorizontal="3dp">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
-                <TextView style="@style/PKMuted" android:text="LOAN TAKEN" android:textSize="10sp" android:letterSpacing="0.04"/>
-                <TextView style="@style/PKTitle" android:id="@+id/borrowed" android:text="৳ 0.00" android:textSize="20sp" android:layout_marginTop="4dp"/>
-                <TextView style="@style/PKMuted" android:text="To pay back" android:textSize="11sp" android:layout_marginTop="2dp"/>
+        <com.google.android.material.card.MaterialCardView android:id="@+id/givenTotalCard" style="@style/PKCard" android:layout_width="0dp" android:layout_weight="1" android:layout_marginHorizontal="3dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="10dp" android:background="@drawable/glass_panel">
+                <TextView style="@style/PKMuted" android:text="LOAN GIVEN" android:textSize="10sp" android:maxLines="1" android:fontFamily="sans-serif-medium"/>
+                <TextView style="@style/PKTitle" android:id="@+id/lent" android:text="৳ 0.00" android:textSize="20sp" android:fontFamily="sans-serif-condensed" android:textStyle="bold" android:layout_marginTop="6dp" android:maxLines="1" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="12sp" android:autoSizeMaxTextSize="20sp" android:autoSizeStepGranularity="1sp"/>
+                <TextView style="@style/PKMuted" android:text="To get back" android:textSize="10sp" android:layout_marginTop="4dp" android:maxLines="1"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView android:id="@+id/takenTotalCard" style="@style/PKCard" android:layout_width="0dp" android:layout_weight="1" android:layout_marginHorizontal="3dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="10dp" android:background="@drawable/glass_panel">
+                <TextView style="@style/PKMuted" android:text="LOAN TAKEN" android:textSize="10sp" android:maxLines="1" android:fontFamily="sans-serif-medium"/>
+                <TextView style="@style/PKTitle" android:id="@+id/borrowed" android:text="৳ 0.00" android:textSize="20sp" android:fontFamily="sans-serif-condensed" android:textStyle="bold" android:layout_marginTop="6dp" android:maxLines="1" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="12sp" android:autoSizeMaxTextSize="20sp" android:autoSizeStepGranularity="1sp"/>
+                <TextView style="@style/PKMuted" android:text="To pay back" android:textSize="10sp" android:layout_marginTop="4dp" android:maxLines="1"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
-    <TextView style="@style/PKText" android:id="@+id/listHeading" android:text="Recent Records" android:fontFamily="sans-serif-medium" android:textSize="18sp" android:layout_marginTop="16dp"/>
+    <TextView style="@style/PKText" android:id="@+id/listHeading" android:text="Your Records" android:fontFamily="sans-serif-medium" android:textSize="18sp" android:layout_marginTop="16dp"/>
     <com.google.android.material.textfield.TextInputLayout android:id="@+id/searchLayout" android:layout_marginTop="10dp" style="@style/PKField" android:hint="Search your records">
         <com.google.android.material.textfield.TextInputEditText android:id="@+id/search" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:singleLine="true"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.pocketkhata.app.DashboardFilters android:id="@+id/filters" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="vertical">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-            <com.google.android.material.chip.Chip android:id="@+id/filter_all" style="@style/Widget.Material3.Chip.Filter" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="All" android:checkable="true" android:checked="true"/>
-            <com.google.android.material.chip.Chip android:id="@+id/filter_expense" style="@style/Widget.Material3.Chip.Filter" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Expenses" android:checkable="true" android:layout_marginStart="8dp"/>
+            <com.google.android.material.chip.Chip android:id="@+id/filter_all" style="@style/Widget.Material3.Chip.Filter" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="All" android:checkable="true" android:checked="true" app:chipStrokeColor="@color/filter_stroke" app:chipStrokeWidth="1.25dp" app:chipBackgroundColor="@color/filter_background" app:chipCornerRadius="12dp"/>
+            <com.google.android.material.chip.Chip android:id="@+id/filter_expense" style="@style/Widget.Material3.Chip.Filter" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Expenses" android:checkable="true" android:layout_marginStart="8dp" app:chipStrokeColor="@color/filter_stroke" app:chipStrokeWidth="1.25dp" app:chipBackgroundColor="@color/filter_background" app:chipCornerRadius="12dp"/>
         </LinearLayout>
         <LinearLayout android:id="@+id/loanFilterRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-            <com.google.android.material.chip.Chip android:id="@+id/filter_lent" style="@style/Widget.Material3.Chip.Filter" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Give a Loan" android:checkable="true"/>
-            <com.google.android.material.chip.Chip android:id="@+id/filter_borrowed" style="@style/Widget.Material3.Chip.Filter" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Take a Loan" android:checkable="true" android:layout_marginStart="8dp"/>
+            <com.google.android.material.chip.Chip android:id="@+id/filter_lent" style="@style/Widget.Material3.Chip.Filter" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Give a Loan" android:checkable="true" app:chipStrokeColor="@color/filter_stroke" app:chipStrokeWidth="1.25dp" app:chipBackgroundColor="@color/filter_background" app:chipCornerRadius="12dp"/>
+            <com.google.android.material.chip.Chip android:id="@+id/filter_borrowed" style="@style/Widget.Material3.Chip.Filter" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Take a Loan" android:checkable="true" android:layout_marginStart="8dp" app:chipStrokeColor="@color/filter_stroke" app:chipStrokeWidth="1.25dp" app:chipBackgroundColor="@color/filter_background" app:chipCornerRadius="12dp"/>
         </LinearLayout>
     </com.pocketkhata.app.DashboardFilters>
     <TextView style="@style/PKMuted" android:id="@+id/syncStatus" android:text="Connecting…" android:textSize="11sp" android:layout_marginTop="4dp" android:layout_marginBottom="6dp"/>

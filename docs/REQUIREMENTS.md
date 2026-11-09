@@ -4,8 +4,8 @@ Source: E-109 Final Lab Project â€” Instructions.pdf, four pages. The PDF says â
 
 | PDF requirement | PocketKhata implementation |
 |---|---|
-| Individual Android app solving a real problem, Android Studio, Java + XML | Personal student expense/debt management; Java Activities and XML layouts in an Android Studio Gradle project |
-| 1. At least five navigable screens; Activities + Intent, putExtra if needed | Seven Activities; `entry_id` passed using `putExtra` to Details and Edit |
+| Individual Android app solving a real problem, Android Studio, Java + XML | Personal student expense/debt management with monthly analysis; Java Activities and XML layouts in an Android Studio Gradle project |
+| 1. At least five navigable screens; Activities + Intent, putExtra if needed | Eight Activities; `entry_id` passed using `putExtra` to Details and Edit |
 | 2. Layouts and basic text/image/button/card views | ConstraintLayout splash, LinearLayouts, TextViews, ImageViews, MaterialButtons and MaterialCardViews |
 | 3. Validated input, no crash on empty/wrong values | TextInputEditText + setError for name, email, password/confirmation, title, amount, loan person, and phone |
 | 4. Model class with getters/setters | `Entry.java` |

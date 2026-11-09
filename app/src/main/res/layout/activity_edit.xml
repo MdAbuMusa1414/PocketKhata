@@ -5,7 +5,7 @@
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
             <TextView style="@style/PKMuted" android:text="Choose a record type" android:fontFamily="sans-serif-medium"/>
             <com.google.android.material.card.MaterialCardView style="@style/PKCard" android:layout_marginTop="8dp">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:background="@drawable/glass_panel">
                     <RadioGroup android:id="@+id/type" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
                         <com.google.android.material.radiobutton.MaterialRadioButton android:id="@+id/type_expense" android:layout_width="match_parent" android:layout_height="48dp" android:text="Expense"/>
                         <com.google.android.material.radiobutton.MaterialRadioButton android:id="@+id/type_lent" android:layout_width="match_parent" android:layout_height="48dp" android:text="Give a Loan"/>
@@ -26,11 +26,11 @@
             <TextView style="@style/PKMuted" android:id="@+id/categoryLabel" android:text="Category" android:layout_marginTop="16dp"/>
             <Spinner android:id="@+id/category" android:layout_width="match_parent" android:layout_height="54dp" android:layout_marginTop="6dp" android:paddingHorizontal="12dp" android:background="@drawable/field_bg"/>
             <TextView style="@style/PKMuted" android:text="Date" android:layout_marginTop="16dp"/>
-            <com.google.android.material.button.MaterialButton android:id="@+id/date" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Choose Date" app:cornerRadius="14dp" style="@style/Widget.Material3.Button.OutlinedButton" app:icon="@drawable/ic_calendar" app:iconGravity="textStart"/>
+            <com.google.android.material.button.MaterialButton android:id="@+id/date" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Choose Date" app:cornerRadius="14dp" style="@style/PKOutlined" app:icon="@drawable/ic_calendar" app:iconGravity="textStart"/>
             <com.google.android.material.button.MaterialButton android:id="@+id/extrasToggle" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Add Photo or More Details" app:cornerRadius="14dp" style="@style/Widget.Material3.Button.TextButton"/>
             <LinearLayout android:id="@+id/extras" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
                 <com.google.android.material.card.MaterialCardView style="@style/PKCard">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:background="@drawable/glass_panel">
                         <com.google.android.material.textfield.TextInputLayout android:id="@+id/phoneLayout" style="@style/PKField" android:hint="Phone Number (optional)">
                             <com.google.android.material.textfield.TextInputEditText android:id="@+id/phone" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="phone" android:maxLength="20"/>
                         </com.google.android.material.textfield.TextInputLayout>
@@ -39,15 +39,15 @@
                         </com.google.android.material.textfield.TextInputLayout>
                         <TextView style="@style/PKText" android:text="Receipt or Photo" android:layout_marginTop="18dp" android:fontFamily="sans-serif-medium"/>
                         <ImageView android:id="@+id/photo" android:layout_width="match_parent" android:layout_height="180dp" android:visibility="gone" android:layout_marginTop="12dp" android:scaleType="centerInside" android:contentDescription="Selected receipt or photo"/>
-                        <com.google.android.material.button.MaterialButton android:id="@+id/camera" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Take Photo" app:cornerRadius="14dp" style="@style/Widget.Material3.Button.OutlinedButton"/>
-                        <com.google.android.material.button.MaterialButton android:id="@+id/gallery" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Choose Photo" app:cornerRadius="14dp" style="@style/Widget.Material3.Button.OutlinedButton"/>
+                        <com.google.android.material.button.MaterialButton android:id="@+id/camera" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Take Photo" app:cornerRadius="14dp" style="@style/PKOutlined"/>
+                        <com.google.android.material.button.MaterialButton android:id="@+id/gallery" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Choose Photo" app:cornerRadius="14dp" style="@style/PKOutlined"/>
                         <com.google.android.material.button.MaterialButton android:id="@+id/removePhoto" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Remove Photo" app:cornerRadius="14dp" style="@style/Widget.Material3.Button.TextButton"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="20dp" android:paddingBottom="10dp" android:background="@color/white">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="20dp" android:paddingBottom="10dp" android:background="@color/nav_surface">
         <com.google.android.material.button.MaterialButton android:id="@+id/save" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Save Record" app:cornerRadius="14dp"/>
         <ProgressBar android:id="@+id/progress" android:layout_width="24dp" android:layout_height="24dp" android:layout_gravity="center" android:visibility="gone"/>
     </LinearLayout>

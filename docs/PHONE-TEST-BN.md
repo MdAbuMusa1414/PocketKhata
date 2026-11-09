@@ -22,3 +22,5 @@
 কোনো সমস্যা হলে কোন ধাপে হলো, কী message দেখাল এবং screenshot পাঠাও। Final demo-র আগে এই বাস্তব ফোনের পরীক্ষাগুলো শেষ করতে হবে।
 
 Version 1.1 update: পুরোনো অ্যাপ uninstall করবে না। নতুন APK দিয়ে Update চাপবে। Home / Loans / Settings navigation, loan type অনুযায়ী Name field, collapsed extra details, এবং status/navigation bar-এর icon পড়া যায় কি না পরীক্ষা করবে।
+
+Version 1.3: Home-এর All দিয়ে সব matching হিসাব দেখবে। মাঝের Summary চাপলে মাস বদলিয়ে মোট খরচ ও category হিসাব দেখবে; এখানে loan খরচ হিসেবে যোগ হবে না। Home-এর বড় card budget, নিচের Expenses box আসল মাসিক খরচ। নতুন dark green/gold theme-এ system bar, input, button ও তিনটি অঙ্ক পরিষ্কার দেখা যায় কি না পরীক্ষা করবে।

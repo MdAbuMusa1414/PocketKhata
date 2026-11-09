@@ -73,3 +73,9 @@ The bottom navigation opens Home, Loans and Settings. UI labels translate the ex
 ## Version 1.2
 
 The three bottom destinations are Home, Records and Settings. `LedgerRecords.select` applies shared search/type/paid-loan filtering and caps Home to five recent matches while returning the complete matching history for Records. Settings has no duplicate header button. `DashboardFilters` uses weighted LinearLayout rows with single-selection Chips. The original PK vector monogram and maroon/cream palette are shared by the launcher, splash, authentication and main screens.
+
+## Version 1.3: Summary and green/gold palette
+
+`HomeActivity` shows the complete matching history; `LedgerRecords.select` no longer caps Home at five records. `SummaryActivity` subscribes to the same private records, changes the selected month locally and displays monthly expense analysis. `MonthlyBreakdown.calculate` excludes loans and other months, groups categories, sorts totals and computes an exact-paisa daily average (elapsed days for the current month, full length for past months). The native activity navigation is Home / Summary / Settings.
+
+The main Home card represents the saved monthly budget; the three smaller cards separately show monthly expenses and outstanding loan balances. The PK vector geometry is unchanged; its emerald background and gold mark match the dark glass surfaces. System bars use light icons against dark emerald. No additional Firebase tables or permissions are required.

@@ -24,7 +24,7 @@ public class HomeActivity extends BaseActivity {
   private SingleViewAdapter emptyAdapter;
   private View dashboard, empty;
   private String query = "", filter = "All";
-  private boolean loaded, recordsTab;
+  private boolean loaded;
   private String userGreeting = "Welcome to your khata";
 
   @Override
@@ -80,54 +80,30 @@ public class HomeActivity extends BaseActivity {
               render();
             });
     BottomNavigationView nav = findViewById(R.id.navigation);
+    nav.setSelectedItemId(R.id.nav_home);
     nav.setOnItemSelectedListener(
         item -> {
-          if (item.getItemId() == R.id.nav_settings) {
-            startActivity(new Intent(this, SettingsActivity.class));
-            return false;
-          }
-          setRecordsTab(item.getItemId() == R.id.nav_records);
-          list.scrollToPosition(0);
-          return true;
+          if (item.getItemId() == R.id.nav_home) return true;
+          Class<?> target =
+              item.getItemId() == R.id.nav_summary ? SummaryActivity.class : SettingsActivity.class;
+          startActivity(
+              new Intent(this, target)
+                  .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
+          return false;
         });
-    recordsTab =
-        b != null
-            ? b.getBoolean("records_tab")
-            : getIntent().getBooleanExtra("open_records", false);
-    nav.setSelectedItemId(recordsTab ? R.id.nav_records : R.id.nav_home);
-    setRecordsTab(recordsTab);
+    ((DashboardFilters) dashboard.findViewById(R.id.filters)).showAllRecords();
+    dlabel(R.id.listHeading, "Your Records");
   }
 
   @Override
   protected void onNewIntent(Intent intent) {
     super.onNewIntent(intent);
     setIntent(intent);
-    ((BottomNavigationView) findViewById(R.id.navigation))
-        .setSelectedItemId(
-            intent.getBooleanExtra("open_records", false) ? R.id.nav_records : R.id.nav_home);
+    ((BottomNavigationView) findViewById(R.id.navigation)).setSelectedItemId(R.id.nav_home);
   }
 
   private void dlabel(int id, String text) {
     ((TextView) dashboard.findViewById(id)).setText(text);
-  }
-
-  private void setRecordsTab(boolean value) {
-    recordsTab = value;
-    filter = "All";
-    dashboard.findViewById(R.id.spendingCard).setVisibility(value ? View.GONE : View.VISIBLE);
-    dashboard.findViewById(R.id.balanceCards).setVisibility(value ? View.GONE : View.VISIBLE);
-    dashboard.findViewById(R.id.homeTitle).setVisibility(value ? View.VISIBLE : View.GONE);
-    ((DashboardFilters) dashboard.findViewById(R.id.filters)).showAllRecords();
-    dlabel(R.id.homeTitle, "All Records");
-    dlabel(R.id.greeting, value ? "Your complete history" : userGreeting);
-    dlabel(R.id.listHeading, value ? "Find a Record" : "Recent Records");
-    render();
-  }
-
-  @Override
-  protected void onSaveInstanceState(Bundle b) {
-    super.onSaveInstanceState(b);
-    b.putBoolean("records_tab", recordsTab);
   }
 
   @Override
@@ -137,7 +113,7 @@ public class HomeActivity extends BaseActivity {
     String name = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
     userGreeting =
         name == null || name.trim().isEmpty() ? "Welcome to your khata" : "Hello, " + name;
-    dlabel(R.id.greeting, recordsTab ? "Your complete history" : userGreeting);
+    dlabel(R.id.greeting, userGreeting);
     listener =
         repo.listen(
             new Repository.Rows() {
@@ -190,6 +166,7 @@ public class HomeActivity extends BaseActivity {
     dlabel(R.id.lent, Money.format(s.lent));
     dlabel(R.id.borrowed, Money.format(s.borrowed));
     long budget = Prefs.user(this).getLong("budget", 0);
+    dlabel(R.id.budgetAmount, budget > 0 ? Money.format(budget) : "Not set");
     ((LinearProgressIndicator) dashboard.findViewById(R.id.budgetProgress))
         .setProgressCompat(budget > 0 ? (int) Math.min(100, s.spent * 100.0 / budget) : 0, false);
     dlabel(
@@ -200,7 +177,7 @@ public class HomeActivity extends BaseActivity {
                 ? Money.format(s.spent - budget) + " over budget"
                 : Money.format(budget - s.spent) + " left of " + Money.format(budget));
     boolean show = Prefs.user(this).getBoolean("showSettled", true);
-    List<Entry> visible = LedgerRecords.select(entries, recordsTab, show, filter, query);
+    List<Entry> visible = LedgerRecords.select(entries, show, filter, query);
     adapter.submit(visible);
     emptyAdapter.setShown(visible.isEmpty() && loaded);
     ((TextView) empty.findViewById(R.id.emptyTitle))

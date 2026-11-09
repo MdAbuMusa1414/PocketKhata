@@ -6,7 +6,7 @@
             <TextView style="@style/PKTitle" android:text="A fresh start."/>
             <TextView style="@style/PKMuted" android:text="Your own account for expenses and loans." android:layout_marginTop="8dp"/>
             <com.google.android.material.card.MaterialCardView style="@style/PKCard" android:layout_marginTop="22dp">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:background="@drawable/glass_panel">
                     <com.google.android.material.textfield.TextInputLayout android:id="@+id/nameLayout" style="@style/PKField" android:hint="Your Name">
                         <com.google.android.material.textfield.TextInputEditText android:id="@+id/name" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPersonName" android:maxLength="50"/>
                     </com.google.android.material.textfield.TextInputLayout>

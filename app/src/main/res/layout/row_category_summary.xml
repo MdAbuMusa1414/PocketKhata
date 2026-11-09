@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="16dp">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical">
+        <TextView style="@style/PKText" android:id="@+id/categoryName" android:layout_width="0dp" android:layout_weight="1" android:text="Food" android:textSize="14sp"/>
+        <TextView style="@style/PKText" android:id="@+id/categoryAmount" android:layout_width="wrap_content" android:text="৳ 0.00" android:textSize="13sp" android:fontFamily="sans-serif-medium"/>
+    </LinearLayout>
+    <com.google.android.material.progressindicator.LinearProgressIndicator android:id="@+id/categoryProgress" android:layout_width="match_parent" android:layout_height="5dp" android:layout_marginTop="8dp" app:indicatorColor="@color/brand" app:trackColor="@color/brand_soft" app:trackCornerRadius="3dp"/>
+</LinearLayout>

@@ -1,9 +1,11 @@
-PocketKhata 1.2 adds a maroon/cream identity and an original PK monogram (Pocket + Khata) with a curved pocket edge for both the launcher icon and in-app logo.
+PocketKhata 1.3 introduces a **deep green + gold** identity. The PK launcher mark, in-app logo, navigation, controls, translucent panels and clearer borders use the same palette.
 
-Settings now appears only in the bottom navigation. The middle tab is **Records**, showing the full history of expenses and personal loans; Home shows five recent matches. Home's Give a Loan / Take a Loan filters remain available.
+Home now has a monthly-budget card plus three separate total boxes: **Expenses, Loan Given, Loan Taken**. All matching records remain accessible from Home's All/Expenses/Give a Loan/Take a Loan filters.
 
-Download `PocketKhata-v1.2.apk` and choose **Update** over the installed app. App ID, signing certificate, Firebase records and local preferences remain compatible. Do not uninstall to update. Android 8.0 or newer.
+The middle navigation destination is **Summary**, rather than a second record-list view. It supports month selection, total expenses, expense count, daily average, top category, per-category breakdown and sharing. Loans do not count as expenses.
 
-Validation: release compilation, 20 automated Android/data tests, zero Android lint errors, signature verification and comparison with the original signing identity. Fresh testing of this version on the owner's physical Android 12 phone is still needed. The prior live Firebase checks remain applicable to the unchanged backend.
+Download `PocketKhata-v1.3.apk` and choose **Update** over the installed app. Do not uninstall. The app ID, signing certificate, accounts, Firebase data and saved preferences remain compatible. Android 8.0 or newer.
 
-The original APK-attached v1.0 Release is retained for the semester requirement. The separate lab report remains deferred.
+Validation: release build, automated money/auth/photo/layout/inset tests, monthly aggregation tests and APK signature verification. Actual testing on the owner's Android 12 phone is still needed for the new design and Summary navigation.
+
+The original APK-attached v1.0 Release is retained for the semester requirement; the separate lab report remains deferred.

@@ -2,23 +2,23 @@
 
 A Java + XML Android app for personal expenses, money lent, and money borrowed. Built for Mobile Application and Development Lab (0613-410).
 
-**[Download APK](https://raw.githubusercontent.com/MdAbuMusa1414/PocketKhata/main/distribution/PocketKhata-v1.2.apk) · [Release v1.2](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.2)**
+**[Download APK](https://raw.githubusercontent.com/MdAbuMusa1414/PocketKhata/main/distribution/PocketKhata-v1.3.apk) · [Release v1.3](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.3)**
 
 Repository owner: **MdAbuMusa1414**. Before submission, add your exact student name and student ID here; they have not been provided.
 
 ## Design and navigation
 
-PocketKhata 1.2 uses an original **PK** monogram (Pocket + Khata) with a curved pocket edge, a maroon/cream palette, and a single Settings destination in the bottom navigation.
+PocketKhata 1.3 uses a **deep emerald + champagne gold** palette, translucent green panels, clearer gold borders and a matching original PK monogram (Pocket + Khata).
 
-- **Home:** monthly spending, budget, unpaid-loan balances and five recent matching records.
-- **Records:** the complete matching history, including expenses and both loan directions.
-- **Settings:** budget, preferences, account and logout.
+- **Home:** the complete searchable record list, a monthly-budget card, and separate Expenses / Loan Given / Loan Taken total boxes.
+- **Summary:** month selection, total expenses, expense count, daily average, top category, category breakdown and sharing. Loans are excluded from expense analysis.
+- **Settings:** budget, local preferences, account and logout; there is no duplicate header Settings shortcut.
 
-All / Expenses / Give a Loan / Take a Loan filters remain available. Updates use the same app ID, signing identity, Firebase structure and preference keys. The original APK-attached v1.0 Release remains available for the course requirement.
+All / Expenses / Give a Loan / Take a Loan remain record filters on Home. Summary analyzes expenses rather than duplicating the All filter. Updates keep the app ID, signing identity, Firebase structure and preference keys. The original APK-attached v1.0 Release remains available for the course requirement.
 
 ## Features
 
-- Seven Activities: Splash, Login, Register, Home, Add/Edit, Entry Details, Settings. Home also provides a Records tab.
+- Eight Activities: Splash, Login, Register, Home, Add/Edit, Entry Details, Summary, Settings.
 - Firebase Authentication: register, login, password reset, logout, persistent login.
 - Private Firebase Realtime Database records under `users/{uid}/entries/{entryId}`, with live listeners.
 - Create, view, edit and delete Expense, Lent and Borrowed entries.

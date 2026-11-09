@@ -12,7 +12,7 @@
             <TextView style="@style/PKTitle" android:text="A clear view of your money." android:layout_marginTop="32dp" android:textSize="32sp"/>
             <TextView style="@style/PKMuted" android:text="Track expenses and loans. Keep every record in one place." android:layout_marginTop="10dp"/>
             <com.google.android.material.card.MaterialCardView style="@style/PKCard" android:layout_marginTop="24dp">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:background="@drawable/glass_panel">
                     <com.google.android.material.textfield.TextInputLayout android:id="@+id/emailLayout" style="@style/PKField" android:hint="Email">
                         <com.google.android.material.textfield.TextInputEditText android:id="@+id/email" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textEmailAddress"/>
                     </com.google.android.material.textfield.TextInputLayout>
@@ -25,7 +25,7 @@
                     <com.google.android.material.button.MaterialButton android:id="@+id/forgot" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Forgot Password?" app:cornerRadius="14dp" style="@style/Widget.Material3.Button.TextButton"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.button.MaterialButton android:id="@+id/register" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Create an Account" app:cornerRadius="14dp" style="@style/Widget.Material3.Button.OutlinedButton"/>
+            <com.google.android.material.button.MaterialButton android:id="@+id/register" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Create an Account" app:cornerRadius="14dp" style="@style/PKOutlined"/>
             <TextView style="@style/PKMuted" android:text="Private records. Your account. Your khata." android:gravity="center" android:layout_marginTop="20dp" android:textSize="12sp"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

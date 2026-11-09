@@ -19,7 +19,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
     setContentView(layout);
     getWindow().setStatusBarColor(getColor(R.color.paper));
-    getWindow().setNavigationBarColor(getColor(R.color.white));
+    getWindow().setNavigationBarColor(getColor(R.color.nav_surface));
     if (android.os.Build.VERSION.SDK_INT >= 29) getWindow().setNavigationBarContrastEnforced(false);
     applySystemBarAppearance();
     View root = findViewById(R.id.root);
@@ -39,9 +39,9 @@ public abstract class BaseActivity extends AppCompatActivity {
   private void applySystemBarAppearance() {
     WindowInsetsControllerCompat bars =
         WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
-    // "Light" bars use dark icons, readable against PocketKhata's cream background.
-    bars.setAppearanceLightStatusBars(true);
-    bars.setAppearanceLightNavigationBars(true);
+    // The dark emerald surfaces need light system icons for readable status/navigation bars.
+    bars.setAppearanceLightStatusBars(false);
+    bars.setAppearanceLightNavigationBars(false);
   }
 
   @Override
