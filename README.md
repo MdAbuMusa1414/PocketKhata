@@ -2,9 +2,13 @@
 
 A Java + XML Android app for personal expenses, money lent, and money borrowed. Built for Mobile Application and Development Lab (0613-410).
 
-**[Download APK](https://github.com/MdAbuMusa1414/PocketKhata/releases/download/v1.1/PocketKhata-v1.1.apk) · [Release v1.1](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.1)**
+**[Download APK](https://github.com/MdAbuMusa1414/PocketKhata/releases/download/v1.1.1/PocketKhata-v1.1.1.apk) · [Release v1.1.1](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.1.1)**
 
 Repository owner: **MdAbuMusa1414**. Before submission, add your exact student name and student ID here; they have not been provided.
+
+## Version 1.1.1 navigation fix
+
+Home includes all four filters: All, Expenses, Give a Loan and Take a Loan. Navigation icons/labels have an 80 dp bar and system-bar insets are handled once to prevent clipping on Android 12 devices.
 
 ## Version 1.1 design
 

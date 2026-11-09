@@ -29,11 +29,15 @@
     <com.google.android.material.textfield.TextInputLayout android:id="@+id/searchLayout" android:layout_marginTop="10dp" style="@style/PKField" android:hint="Search your records">
         <com.google.android.material.textfield.TextInputEditText android:id="@+id/search" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:singleLine="true"/>
     </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.chip.ChipGroup android:id="@+id/filters" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" app:singleSelection="true" app:selectionRequired="true">
-        <com.google.android.material.chip.Chip android:id="@+id/filter_all" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="All" android:checkable="true" android:checked="true"/>
-        <com.google.android.material.chip.Chip android:id="@+id/filter_expense" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Expenses" android:checkable="true"/>
-        <com.google.android.material.chip.Chip android:id="@+id/filter_lent" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Loan Given" android:checkable="true" android:visibility="gone"/>
-        <com.google.android.material.chip.Chip android:id="@+id/filter_borrowed" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Loan Taken" android:checkable="true" android:visibility="gone"/>
-    </com.google.android.material.chip.ChipGroup>
+<com.pocketkhata.app.DashboardFilters android:id="@+id/filters" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="vertical">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+<com.google.android.material.chip.Chip android:id="@+id/filter_all" style="@style/Widget.Material3.Chip.Filter" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="All" android:checkable="true" android:checked="true"/>
+<com.google.android.material.chip.Chip android:id="@+id/filter_expense" style="@style/Widget.Material3.Chip.Filter" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Expenses" android:checkable="true" android:layout_marginStart="8dp"/>
+</LinearLayout>
+<LinearLayout android:id="@+id/loanFilterRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+<com.google.android.material.chip.Chip android:id="@+id/filter_lent" style="@style/Widget.Material3.Chip.Filter" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Give a Loan" android:checkable="true"/>
+<com.google.android.material.chip.Chip android:id="@+id/filter_borrowed" style="@style/Widget.Material3.Chip.Filter" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Take a Loan" android:checkable="true" android:layout_marginStart="8dp"/>
+</LinearLayout>
+</com.pocketkhata.app.DashboardFilters>
     <TextView style="@style/PKMuted" android:id="@+id/syncStatus" android:text="Connecting…" android:textSize="11sp" android:layout_marginTop="4dp" android:layout_marginBottom="6dp"/>
 </LinearLayout>

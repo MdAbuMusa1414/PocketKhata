@@ -15,3 +15,11 @@ Still required: install on the owner's Android 12 / ColorOS 12.1 phone and compl
 15 Android API 32 tests pass, including the three navigation destinations, contextual loan/expense field visibility, empty-state scroll clearance and dark system-bar icon appearance after focus. Release compilation, Android lint (zero errors) and v2/v3 signature verification passed. The signing certificate matches v1.0 for in-place updates. The package ID and Firebase schema remain unchanged. The prior 15 live Firebase checks apply to the unchanged backend; no new test accounts were added for this UI update.
 
 The owner supplied v1.0 phone screenshots showing installation, a signed-in account, expense/loan records, budget math, filters and a stored photo. The redesigned v1.1 needs a fresh device check; camera, call/share and logout/session checks still need explicit owner confirmation. No real user screenshots or private account records are published here.
+
+## Version 1.1.1 device-reported navigation regression
+
+Owner screenshots showed missing loan filters on Home and clipped bottom-navigation content in v1.1. The activity root was reserving system-bar space and passing the same insets to Material navigation, which added that space inside a fixed-height bar again. The root now consumes the applied insets; bottom navigation is 80 dp with explicit icon and label spacing.
+
+A new Android 12 regression test dispatches 48/96 px navigation insets and checks all three selected icons/labels remain within the bar without overlapping. A second test verifies All, Expenses, Give a Loan and Take a Loan remain visible and fit into two columns; the Loans tab retains both directions. These tests include the real base activity inset handler and Material navigation widget. Fresh confirmation on the owner's phone remains required.
+
+Version 1.1.1 verification complete: 17 automated tests passed; Android lint has zero errors; the signed release APK passed signature verification and has the same signing identity as the installed versions. Actual-phone confirmation of the fix is still pending.

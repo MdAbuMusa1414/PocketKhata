@@ -68,10 +68,9 @@ public class HomeActivity extends BaseActivity {
 
               public void afterTextChanged(Editable e) {}
             });
-    ((ChipGroup) dashboard.findViewById(R.id.filters))
-        .setOnCheckedStateChangeListener(
-            (group, ids) -> {
-              int id = ids.isEmpty() ? R.id.filter_all : ids.get(0);
+    ((DashboardFilters) dashboard.findViewById(R.id.filters))
+        .setOnSelectionChangedListener(
+            id -> {
               filter =
                   id == R.id.filter_expense
                       ? "Expense"
@@ -114,11 +113,7 @@ public class HomeActivity extends BaseActivity {
     loanTab = value;
     filter = "All";
     dashboard.findViewById(R.id.spendingCard).setVisibility(value ? View.GONE : View.VISIBLE);
-    dashboard.findViewById(R.id.filter_expense).setVisibility(value ? View.GONE : View.VISIBLE);
-    dashboard.findViewById(R.id.filter_lent).setVisibility(value ? View.VISIBLE : View.GONE);
-    dashboard.findViewById(R.id.filter_borrowed).setVisibility(value ? View.VISIBLE : View.GONE);
-    ((Chip) dashboard.findViewById(R.id.filter_all)).setText(value ? "All Loans" : "All");
-    ((ChipGroup) dashboard.findViewById(R.id.filters)).check(R.id.filter_all);
+    ((DashboardFilters) dashboard.findViewById(R.id.filters)).showLoansOnly(value);
     dlabel(R.id.homeTitle, value ? "My Loans" : "My Money");
     dlabel(R.id.listHeading, value ? "Loan Records" : "Recent Records");
     render();

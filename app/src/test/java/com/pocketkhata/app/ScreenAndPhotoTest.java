@@ -140,6 +140,10 @@ public class ScreenAndPhotoTest {
         View.MeasureSpec.makeMeasureSpec(720, View.MeasureSpec.EXACTLY),
         View.MeasureSpec.makeMeasureSpec(1472, View.MeasureSpec.EXACTLY));
     root.layout(0, 0, 720, 1472);
+    root.measure(
+        View.MeasureSpec.makeMeasureSpec(720, View.MeasureSpec.EXACTLY),
+        View.MeasureSpec.makeMeasureSpec(1472, View.MeasureSpec.EXACTLY));
+    root.layout(0, 0, 720, 1472);
   }
 
   @Test

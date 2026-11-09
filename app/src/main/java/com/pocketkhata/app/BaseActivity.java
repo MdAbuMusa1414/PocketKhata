@@ -29,8 +29,11 @@ public abstract class BaseActivity extends AppCompatActivity {
           Insets b = i.getInsets(WindowInsetsCompat.Type.systemBars());
           Insets ime = i.getInsets(WindowInsetsCompat.Type.ime());
           v.setPadding(b.left, b.top, b.right, Math.max(b.bottom, ime.bottom));
-          return i;
+          // This root already reserves the system-bar and keyboard space. Forwarding
+          // it would make Material's navigation bar add the bottom inset a second time.
+          return WindowInsetsCompat.CONSUMED;
         });
+    ViewCompat.requestApplyInsets(root);
   }
 
   private void applySystemBarAppearance() {
