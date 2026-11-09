@@ -1,0 +1,32 @@
+name: Publish verified PocketKhata APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - distribution/PocketKhata-v1.0.apk
+      - .github/workflows/publish-apk.yml
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the source and signed APK
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Verify the exact locally tested APK
+        run: |
+          printf '%s\n' 'ebec7c5eb58f999f20ea28911d369b6657a3d16a2da377feacc6aa0ff33b4fed  distribution/PocketKhata-v1.0.apk' | sha256sum --check
+      - name: Publish version 1.0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh release view v1.0 --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release create v1.0 --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title 'PocketKhata v1.0' --notes-file docs/RELEASE-NOTES.md
+          fi
+          if ! gh release view v1.0 --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name' | grep -Fxq 'PocketKhata-v1.0.apk'; then
+            gh release upload v1.0 distribution/PocketKhata-v1.0.apk --repo "$GITHUB_REPOSITORY"
+          fi
