@@ -24,3 +24,17 @@
 Version 1.1 update: পুরোনো অ্যাপ uninstall করবে না। নতুন APK দিয়ে Update চাপবে। Home / Loans / Settings navigation, loan type অনুযায়ী Name field, collapsed extra details, এবং status/navigation bar-এর icon পড়া যায় কি না পরীক্ষা করবে।
 
 Version 1.3: Home-এর All দিয়ে সব matching হিসাব দেখবে। মাঝের Summary চাপলে মাস বদলিয়ে মোট খরচ ও category হিসাব দেখবে; এখানে loan খরচ হিসেবে যোগ হবে না। Home-এর বড় card budget, নিচের Expenses box আসল মাসিক খরচ। নতুন dark green/gold theme-এ system bar, input, button ও তিনটি অঙ্ক পরিষ্কার দেখা যায় কি না পরীক্ষা করবে।
+
+## Version 1.4: Profile ও নতুন theme
+
+পুরোনো অ্যাপ uninstall না করে নতুন APK খুলে **Update** চাপবে।
+
+1. Home-এর একদম বাঁ দিকে উপরের **My Profile** বা avatar চাপো।
+2. **Change Photo → Choose Photo** দিয়ে নিজের ছবি বাছো; চাইলে **Take Photo**-ও পরীক্ষা করো।
+3. **Full Name** ও **Phone Number** দাও। **Email Address**-এ তোমার login email দেখাবে; এখান থেকে email পরিবর্তন হবে না। ফোনের ঘর ফাঁকা রাখা যায়, দিলে বৈধ নম্বর দিতে হবে।
+4. Internet চালু রেখে **Save Profile** চাপো। Home-এ ফিরে avatar ও greeting বদলেছে কি না দেখো।
+5. অ্যাপ বন্ধ করে আবার খোলো এবং Profile-এর ছবি, নাম ও ফোন রয়ে গেছে কি না দেখো। **Remove Photo** দিয়ে save করলে placeholder ফিরে আসবে।
+6. ছবি বাছার সময় Cancel বা ফোন rotate করলে কোনো crash বা অসম্পূর্ণ save হচ্ছে কি না দেখো।
+7. Lavender/pink/mint/black logo ও একই রঙের screen, button, navigation দেখো। Home/Summary/Settings-এর icon ও লেখা এবং keyboard খোলা অবস্থায় Save Profile পড়া যায় কি না দেখো।
+
+এই version-এর নতুন profile ও theme এখনও তোমার ফোনে পরীক্ষা করা বাকি।

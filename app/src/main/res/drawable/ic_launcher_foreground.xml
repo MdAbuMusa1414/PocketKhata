@@ -2,5 +2,5 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
     <path android:fillColor="@color/logo_paper" android:fillType="evenOdd" android:pathData="M22,28H40C53,28 59,34 59,45C59,56 52,62 40,62H32V79H22ZM32,38V52H40C46,52 49,50 49,45C49,40 45,38 40,38Z"/>
     <path android:fillColor="@color/logo_accent" android:pathData="M55,29H64V48L76,29H87L71,53L89,79H78L64,61V79H55Z"/>
-    <path android:fillColor="@android:color/transparent" android:strokeColor="@color/logo_accent" android:strokeWidth="3" android:strokeLineCap="round" android:pathData="M23,84Q54,100 85,84"/>
+    <path android:fillColor="@android:color/transparent" android:strokeColor="@color/logo_curve" android:strokeWidth="3" android:strokeLineCap="round" android:pathData="M23,84Q54,100 85,84"/>
 </vector>

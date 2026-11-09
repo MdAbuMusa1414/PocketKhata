@@ -19,7 +19,7 @@
                     <com.google.android.material.textfield.TextInputLayout android:id="@+id/confirmLayout" style="@style/PKField" android:hint="Confirm Password" app:endIconMode="password_toggle">
                         <com.google.android.material.textfield.TextInputEditText android:id="@+id/confirm" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword"/>
                     </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.button.MaterialButton android:id="@+id/create" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Create Account" app:cornerRadius="14dp"/>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/create" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Create Account" app:cornerRadius="24dp"/>
                     <ProgressBar android:id="@+id/progress" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:visibility="gone"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

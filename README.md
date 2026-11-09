@@ -2,24 +2,26 @@
 
 A Java + XML Android app for personal expenses, money lent, and money borrowed. Built for Mobile Application and Development Lab (0613-410).
 
-**[Download APK](https://raw.githubusercontent.com/MdAbuMusa1414/PocketKhata/main/distribution/PocketKhata-v1.3.apk) · [Release v1.3](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.3)**
+**[Download APK](https://raw.githubusercontent.com/MdAbuMusa1414/PocketKhata/main/distribution/PocketKhata-v1.4.apk) · [Release v1.4](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.4)**
 
 Repository owner: **MdAbuMusa1414**. Before submission, add your exact student name and student ID here; they have not been provided.
 
 ## Design and navigation
 
-PocketKhata 1.3 uses a **deep emerald + champagne gold** palette, translucent green panels, clearer gold borders and a matching original PK monogram (Pocket + Khata).
+PocketKhata 1.4 uses a **soft lavender, blush pink, mint and black** palette inspired by the owner’s supplied interface reference. Frosted panels, pill controls and floating navigation share the same colors as the original PK monogram (Pocket + Khata).
 
 - **Home:** the complete searchable record list, a monthly-budget card, and separate Expenses / Loan Given / Loan Taken total boxes.
 - **Summary:** month selection, total expenses, expense count, daily average, top category, category breakdown and sharing. Loans are excluded from expense analysis.
 - **Settings:** budget, local preferences, account and logout; there is no duplicate header Settings shortcut.
+- **My Profile:** tap the avatar at the upper left of Home to choose/take/remove a photo, edit your name and phone number, and view your login email.
 
 All / Expenses / Give a Loan / Take a Loan remain record filters on Home. Summary analyzes expenses rather than duplicating the All filter. Updates keep the app ID, signing identity, Firebase structure and preference keys. The original APK-attached v1.0 Release remains available for the course requirement.
 
 ## Features
 
-- Eight Activities: Splash, Login, Register, Home, Add/Edit, Entry Details, Summary, Settings.
+- Nine Activities: Splash, Login, Register, Home, Add/Edit, Entry Details, Summary, Settings, Profile.
 - Firebase Authentication: register, login, password reset, logout, persistent login.
+- Private profile metadata under `users/{uid}/profile`; login email stays in Firebase Authentication.
 - Private Firebase Realtime Database records under `users/{uid}/entries/{entryId}`, with live listeners.
 - Create, view, edit and delete Expense, Lent and Borrowed entries.
 - Confirm deletion and repayment changes with Material dialogs; create entries from the FAB.
@@ -45,17 +47,17 @@ Command line: `./gradlew assembleDebug testDebugUnitTest lintDebug`. On Windows:
 
 ## APK and release
 
-The installable version 1.0 APK is provided separately. `assembleRelease` generates an unsigned release APK; a separate owner-controlled signing key is required to sign updates. Never commit private signing material to this public repository.
+The latest signed APK is linked above, and the original version 1.0 remains attached to its public Release. `assembleRelease` generates an unsigned release APK; a separate owner-controlled signing key is required to sign updates. Never commit private signing material to this public repository.
 
 The Firebase Android configuration contains public client identifiers, not an administrative service-account key. Database authorization is enforced by Firebase Authentication and the rules, not by hiding the client API key. Never add Firebase Admin credentials, account passwords, OTPs, or GitHub tokens to this repository.
 
 ## Before final submission
 
 - Open the project and review/modify the code; understand the components for the viva.
-- Push the supplied Git history to this public repository from Android Studio. The supplied Git history is preserved in this repository.
+- Open this public repository in Android Studio, connect your GitHub account there and make your own meaningful modification/push. Publication so far was performed using the authorized command-line connection.
 - Add your student name and ID above.
 - Test on the actual phone using the checklist in `docs/PHONE-TEST-BN.md`.
-- Create GitHub Release **v1.0** and attach the signed APK. Do not upload the private signing backup.
+- Keep the published APK-attached **v1.0** Release and repository public. Do not upload the private signing backup.
 - Prepare the separate 10–15 page report when requested; no report is included yet.
 - Keep the repository public after submission.
 
@@ -66,3 +68,5 @@ See `docs/REQUIREMENTS.md` for every requirement and `docs/ARCHITECTURE.md` for 
 Rendered Android 12.1 layouts; dashboard uses labelled sample data, not the owner’s account.
 
 <img src="docs/previews/login.png" width="260" alt="PocketKhata login preview"> <img src="docs/previews/home-sample.png" width="260" alt="Sample PocketKhata dashboard preview">
+
+<img src="docs/previews/profile.png" width="260" alt="Sample profile preview"> <img src="docs/previews/brand-mark.png" width="120" alt="PK logo using the interface colors">

@@ -29,7 +29,7 @@ public class ScreenAndPhotoTest {
   }
 
   @Test
-  public void allEightScreensInflateOnAndroid12() {
+  public void allNineScreensInflateOnAndroid12() {
     for (int id :
         new int[] {
           R.layout.activity_splash,
@@ -39,7 +39,8 @@ public class ScreenAndPhotoTest {
           R.layout.activity_edit,
           R.layout.activity_detail,
           R.layout.activity_settings,
-          R.layout.activity_summary
+          R.layout.activity_summary,
+          R.layout.activity_profile
         }) assertNotNull(LayoutInflater.from(context()).inflate(id, null).findViewById(R.id.root));
   }
 
@@ -100,6 +101,29 @@ public class ScreenAndPhotoTest {
     assertNull(Photos.decode("not-an-image"));
   }
 
+  @Test
+  public void profilePhotoCanBeReplacedAndRemovedWithoutKeepingTheOldImage() {
+    ImageView avatar = new ImageView(context());
+    avatar.setLayoutParams(new ViewGroup.LayoutParams(92, 92));
+    Bitmap image = Bitmap.createBitmap(80, 60, Bitmap.Config.ARGB_8888);
+    image.eraseColor(0xffa47990);
+    ByteArrayOutputStream out = new ByteArrayOutputStream();
+    image.compress(Bitmap.CompressFormat.JPEG, 80, out);
+    String encoded =
+        android.util.Base64.encodeToString(out.toByteArray(), android.util.Base64.NO_WRAP);
+    ProfilePhotos.bind(avatar, encoded);
+    assertEquals(ImageView.ScaleType.CENTER_CROP, avatar.getScaleType());
+    assertEquals(0, avatar.getPaddingLeft());
+    assertTrue(avatar.getDrawable() instanceof android.graphics.drawable.BitmapDrawable);
+    ProfilePhotos.bind(avatar, "");
+    assertEquals(ImageView.ScaleType.CENTER_INSIDE, avatar.getScaleType());
+    assertTrue(avatar.getPaddingLeft() > 0);
+    assertFalse(avatar.getDrawable() instanceof android.graphics.drawable.BitmapDrawable);
+    ProfilePhotos.bind(avatar, "invalid image data");
+    assertNotNull(avatar.getDrawable());
+    image.recycle();
+  }
+
   private View home(boolean noRecords) {
     Context c = context();
     View root = LayoutInflater.from(c).inflate(R.layout.activity_home, null);
@@ -149,7 +173,7 @@ public class ScreenAndPhotoTest {
   }
 
   @Test
-  public void emptyStateCanBeScrolledAboveTheButton() {
+  public void emptyStateCanBeScrolledAboveNavigationAndBelowTheAddButton() {
     ViewGroup root = (ViewGroup) home(true);
     size(root);
     RecyclerView list = root.findViewById(R.id.list);
@@ -157,13 +181,20 @@ public class ScreenAndPhotoTest {
     size(root);
     View subtitle = root.findViewById(R.id.emptySubtitle);
     assertNotNull(subtitle);
-    View button = root.findViewById(R.id.add);
+    View button = root.findViewById(R.id.navigation);
     android.graphics.Rect
         a = new android.graphics.Rect(0, 0, subtitle.getWidth(), subtitle.getHeight()),
         b = new android.graphics.Rect(0, 0, button.getWidth(), button.getHeight());
     root.offsetDescendantRectToMyCoords(subtitle, a);
     root.offsetDescendantRectToMyCoords(button, b);
-    assertTrue("Last content must be scrollable above Add button", a.bottom < b.top);
+    assertTrue("Last content must be scrollable above navigation", a.bottom < b.top);
+    android.graphics.Rect action = new android.graphics.Rect();
+    View add = root.findViewById(R.id.add);
+    action.set(0, 0, add.getWidth(), add.getHeight());
+    root.offsetDescendantRectToMyCoords(add, action);
+    assertTrue(
+        "Add action must stay in the header, clear of record content",
+        action.bottom <= list.getTop());
   }
 
   @Test
@@ -237,7 +268,9 @@ public class ScreenAndPhotoTest {
     brand.recycle();
 
     for (String name :
-        new String[] {"login", "home-sample", "add-expense", "add-loan", "settings", "summary"}) {
+        new String[] {
+          "login", "home-sample", "add-expense", "add-loan", "settings", "summary", "profile"
+        }) {
       View root;
       if (name.equals("home-sample")) root = home(false);
       else {
@@ -246,8 +279,20 @@ public class ScreenAndPhotoTest {
                 ? R.layout.activity_login
                 : name.equals("settings")
                     ? R.layout.activity_settings
-                    : name.equals("summary") ? R.layout.activity_summary : R.layout.activity_edit;
+                    : name.equals("summary")
+                        ? R.layout.activity_summary
+                        : name.equals("profile")
+                            ? R.layout.activity_profile
+                            : R.layout.activity_edit;
         root = LayoutInflater.from(context()).inflate(id, null);
+        if (name.equals("profile")) {
+          ((TextView) root.findViewById(R.id.profileName)).setText("Sample Student");
+          ((TextView) root.findViewById(R.id.profilePhone)).setText("01700000000");
+          ((TextView) root.findViewById(R.id.profileEmail)).setText("student@example.com");
+          ((TextView) root.findViewById(R.id.profileStatus))
+              .setText("Sample profile · design preview");
+          root.findViewById(R.id.profileProgress).setVisibility(View.GONE);
+        }
         if (name.equals("summary")) {
           ((TextView) root.findViewById(R.id.summaryTotal)).setText("৳ 3,450.50");
           ((TextView) root.findViewById(R.id.summaryCount)).setText("9 expenses recorded");
@@ -277,13 +322,20 @@ public class ScreenAndPhotoTest {
               .check(name.equals("add-loan") ? R.id.type_lent : R.id.type_expense);
         }
       }
-      size(root);
-      Bitmap bitmap = Bitmap.createBitmap(720, 1472, Bitmap.Config.ARGB_8888);
-      root.draw(new android.graphics.Canvas(bitmap));
-      try (FileOutputStream stream = new FileOutputStream(new File(out, name + ".png"))) {
-        assertTrue(bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream));
+      // Attach layouts so Material hint/indicator animations reach their final displayed state.
+      try (var controller =
+          org.robolectric.Robolectric.buildActivity(android.app.Activity.class).setup().visible()) {
+        controller.get().setContentView(root);
+        org.robolectric.shadows.ShadowLooper.idleMainLooper(
+            1, java.util.concurrent.TimeUnit.SECONDS);
+        size(root);
+        Bitmap bitmap = Bitmap.createBitmap(720, 1472, Bitmap.Config.ARGB_8888);
+        root.draw(new android.graphics.Canvas(bitmap));
+        try (FileOutputStream stream = new FileOutputStream(new File(out, name + ".png"))) {
+          assertTrue(bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream));
+        }
+        bitmap.recycle();
       }
-      bitmap.recycle();
     }
   }
 }

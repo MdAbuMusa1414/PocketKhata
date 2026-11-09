@@ -7,6 +7,9 @@
 - `HomeActivity`: lifecycle-bound realtime subscriptions, monthly summary, search and filters.
 - `EditActivity`: validated create/update, date picker and camera/gallery receipt acquisition.
 - `DetailActivity`: live entry view, edit/delete, settle/reopen, dial and share.
+- `ProfileActivity`: private photo/name/phone editor and read-only Firebase account email.
+- `ProfileStore`, `UserProfile`: UID-scoped profile subscription and writes.
+- `ProfileValidation`, `ProfilePhotos`: validated metadata and avatar/photo fallback.
 - `SettingsActivity`: local preferences, summary share, project link and logout.
 - `Repository`: current-user database path and listener/write operations.
 - `Entry`: Firebase-compatible no-argument Java model with getters/setters.
@@ -22,6 +25,11 @@
 ```text
 users
   {firebase-auth-uid}
+    profile
+      name: "Sample Student"
+      phone: ""
+      photo: "small base64 JPEG, or empty string"
+      updatedAt: epoch milliseconds
     entries
       {push-id}
         title: "Lunch"
@@ -79,3 +87,11 @@ The three bottom destinations are Home, Records and Settings. `LedgerRecords.sel
 `HomeActivity` shows the complete matching history; `LedgerRecords.select` no longer caps Home at five records. `SummaryActivity` subscribes to the same private records, changes the selected month locally and displays monthly expense analysis. `MonthlyBreakdown.calculate` excludes loans and other months, groups categories, sorts totals and computes an exact-paisa daily average (elapsed days for the current month, full length for past months). The native activity navigation is Home / Summary / Settings.
 
 The main Home card represents the saved monthly budget; the three smaller cards separately show monthly expenses and outstanding loan balances. The PK vector geometry is unchanged; its emerald background and gold mark match the dark glass surfaces. System bars use light icons against dark emerald. No additional Firebase tables or permissions are required.
+
+## Version 1.4: profile and pastel identity
+
+The upper-left Home avatar opens `ProfileActivity`. Existing users start with their Firebase display name; a missing profile is treated as an empty profile. The screen saves the name, normalized optional phone and resized photo under the signed-in UID, then updates the Firebase Auth display name. Account email is read directly from FirebaseAuth and is read-only here. The phone is contact metadata, not an SMS-verified authentication number.
+
+Profile photos reuse the receipt pipeline, including EXIF correction and the 125,000-byte JPEG limit. A photo can be chosen, captured or removed. Profile edits stay local until Save Profile is pressed; an active connection is required and cloud success waits for server acknowledgement. Home uses a lifecycle-bound profile listener to update the avatar and greeting. Existing UID rules cover both entries and profile; no new Firebase service or permissions are needed.
+
+The interface and launcher use lavender, blush, mint and black. Light system surfaces use dark system icons. Bottom navigation sits in a rounded floating panel; the activity root still consumes applied insets to prevent duplicate navigation padding.

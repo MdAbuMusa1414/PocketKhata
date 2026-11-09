@@ -17,6 +17,8 @@ import java.util.*;
 
 public class HomeActivity extends BaseActivity {
   private Repository repo;
+  private ProfileStore profileStore;
+  private ValueEventListener profileListener;
   private ValueEventListener listener, connectionListener;
   private DatabaseReference connection;
   private List<Entry> entries = new ArrayList<>();
@@ -33,6 +35,9 @@ public class HomeActivity extends BaseActivity {
     if (!requireLogin()) return;
     screen(R.layout.activity_home);
     repo = new Repository(this);
+    profileStore = new ProfileStore(this);
+    findViewById(R.id.profileEntry)
+        .setOnClickListener(v -> startActivity(new Intent(this, ProfileActivity.class)));
     RecyclerView list = findViewById(R.id.list);
     list.setLayoutManager(new LinearLayoutManager(this));
     list.setItemAnimator(null);
@@ -114,6 +119,19 @@ public class HomeActivity extends BaseActivity {
     userGreeting =
         name == null || name.trim().isEmpty() ? "Welcome to your khata" : "Hello, " + name;
     dlabel(R.id.greeting, userGreeting);
+    profileListener =
+        profileStore.listen(
+            new ProfileStore.Listener() {
+              public void loaded(UserProfile profile) {
+                ProfilePhotos.bind(findViewById(R.id.homeAvatar), profile.getPhoto());
+                if (!profile.getName().isEmpty())
+                  dlabel(R.id.greeting, "Hello, " + profile.getName());
+              }
+
+              public void failed(String message) {
+                ProfilePhotos.bind(findViewById(R.id.homeAvatar), "");
+              }
+            });
     listener =
         repo.listen(
             new Repository.Rows() {
@@ -151,6 +169,7 @@ public class HomeActivity extends BaseActivity {
   @Override
   protected void onStop() {
     if (repo != null) repo.remove(listener);
+    if (profileStore != null) profileStore.remove(profileListener);
     if (connection != null && connectionListener != null)
       connection.removeEventListener(connectionListener);
     super.onStop();

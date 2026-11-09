@@ -20,12 +20,12 @@
                         <com.google.android.material.textfield.TextInputEditText android:id="@+id/password" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword"/>
                     </com.google.android.material.textfield.TextInputLayout>
                     <com.google.android.material.checkbox.MaterialCheckBox android:id="@+id/remember" android:layout_width="wrap_content" android:layout_height="48dp" android:text="Remember my email"/>
-                    <com.google.android.material.button.MaterialButton android:id="@+id/login" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Log In" app:cornerRadius="14dp"/>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/login" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Log In" app:cornerRadius="24dp"/>
                     <ProgressBar android:id="@+id/progress" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:visibility="gone"/>
-                    <com.google.android.material.button.MaterialButton android:id="@+id/forgot" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Forgot Password?" app:cornerRadius="14dp" style="@style/Widget.Material3.Button.TextButton"/>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/forgot" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Forgot Password?" app:cornerRadius="24dp" style="@style/Widget.Material3.Button.TextButton"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.button.MaterialButton android:id="@+id/register" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Create an Account" app:cornerRadius="14dp" style="@style/PKOutlined"/>
+            <com.google.android.material.button.MaterialButton android:id="@+id/register" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="10dp" android:text="Create an Account" app:cornerRadius="24dp" style="@style/PKOutlined"/>
             <TextView style="@style/PKMuted" android:text="Private records. Your account. Your khata." android:gravity="center" android:layout_marginTop="20dp" android:textSize="12sp"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

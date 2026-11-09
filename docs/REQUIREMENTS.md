@@ -5,16 +5,16 @@ Source: E-109 Final Lab Project â€” Instructions.pdf, four pages. The PDF says â
 | PDF requirement | PocketKhata implementation |
 |---|---|
 | Individual Android app solving a real problem, Android Studio, Java + XML | Personal student expense/debt management with monthly analysis; Java Activities and XML layouts in an Android Studio Gradle project |
-| 1. At least five navigable screens; Activities + Intent, putExtra if needed | Eight Activities; `entry_id` passed using `putExtra` to Details and Edit |
+| 1. At least five navigable screens; Activities + Intent, putExtra if needed | Nine Activities; `entry_id` passed using `putExtra` to Details and Edit |
 | 2. Layouts and basic text/image/button/card views | ConstraintLayout splash, LinearLayouts, TextViews, ImageViews, MaterialButtons and MaterialCardViews |
 | 3. Validated input, no crash on empty/wrong values | TextInputEditText + setError for name, email, password/confirmation, title, amount, loan person, and phone |
-| 4. Model class with getters/setters | `Entry.java` |
+| 4. Model class with getters/setters | `Entry.java`, `UserProfile.java` |
 | 5. Scrolling records | `RecyclerView`, `EntryAdapter`, `Holder` ViewHolder |
 | 6. Add/view/edit/delete, dialogs and FAB | Home FAB, EditActivity, DetailActivity, delete confirmation, settle/reopen dialog |
 | 7. Firebase register/login/logout/stay logged in | FirebaseAuth in Register/Login/Settings; Splash uses persisted `getCurrentUser()` |
 | 8. Firebase database and realtime updates | Realtime Database, Repository ValueEventListener and DetailActivity listener |
 | 9. Local setting via SharedPreferences | Monthly budget, show-settled switch and remembered email |
-| 10. Take or pick photo and show it | Both TakePicture and OpenDocument contracts; FileProvider, receipt preview and Details photo |
+| 10. Take or pick photo and show it | Both TakePicture and OpenDocument contracts; FileProvider, receipt preview, Details photo and private profile avatar |
 | 11. Open another app via implicit Intent | ACTION_DIAL, ACTION_SEND, ACTION_VIEW |
 | Custom app name and icon | PocketKhata; original PK monogram with pocket curve |
 | Material Design and success/error Snackbar/Toast | Material 3 theme, Material dialogs/inputs/cards/chips/progress/FAB; BaseActivity.say and Toasts |
@@ -24,7 +24,7 @@ Source: E-109 Final Lab Project â€” Instructions.pdf, four pages. The PDF says â
 | Requirement | Status / action |
 |---|---|
 | Public GitHub repository | Owner created https://github.com/MdAbuMusa1414/PocketKhata |
-| Connect from Android Studio and push from first day | Project includes local Git history and configured origin. Owner account connection and repository push permission verified; remote publication is performed through that authorized connection |
+| Connect from Android Studio and push from first day | Project includes Git history and configured origin. Owner account connection and push permission verified; publication used that authorized command-line connection. The owner still needs to open/connect/push from Android Studio on their PC |
 | Regular meaningful commits | Prepared history records actual development stages; continue making meaningful commits when modifying the app |
 | README with app name, student name/ID, features, run instructions | README supplied; exact student name and ID still need to be added by owner |
 | GitHub Release v1.0 with attached APK | Signed APK prepared for [Release v1.0](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.0); check the release page for the published asset |

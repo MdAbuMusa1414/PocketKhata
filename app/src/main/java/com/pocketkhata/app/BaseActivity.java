@@ -39,9 +39,9 @@ public abstract class BaseActivity extends AppCompatActivity {
   private void applySystemBarAppearance() {
     WindowInsetsControllerCompat bars =
         WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
-    // The dark emerald surfaces need light system icons for readable status/navigation bars.
-    bars.setAppearanceLightStatusBars(false);
-    bars.setAppearanceLightNavigationBars(false);
+    // The light pastel surfaces need dark system icons for readable status/navigation bars.
+    bars.setAppearanceLightStatusBars(true);
+    bars.setAppearanceLightNavigationBars(true);
   }
 
   @Override

@@ -33,3 +33,13 @@ Version 1.1.1 verification complete: 17 automated tests passed; Android lint has
 25 tests pass; Android lint reports zero errors. Added tests verify eight screen layouts, the distinct Home/Summary/Settings navigation, selected-month expense totals/category grouping, exclusion of loans, exact daily-average rounding and readable three-card money values. Home's All filter includes the complete history. Native previews use sample data; this version still requires an actual-phone check.
 
 The palette is dark emerald and gold, including the unchanged PK geometry and dark translucent panels. Light system icons are asserted against dark backgrounds. Monthly Summary reuses the same private Firebase record subscription without changing the data schema, permissions or account identity.
+
+## Version 1.4: Profile and reference-inspired pastel theme (10 November 2026, Bangladesh)
+
+28 automated tests pass, Android lint has zero errors and the release build passes. Checks cover all nine screen layouts, profile name/phone validation, avatar replacement/removal/fallback, resized EXIF-aware images, unchanged money/auth/monthly totals, navigation insets and readable labels. The header Add Record action is kept outside the scrolling records so it cannot cover the loan filters or empty state. Native Android 12.1 previews attach layouts and settle Material animations before capture.
+
+Ten live Firebase profile checks pass: own-profile write/read and changes, photo removal, cross-account read/write denial, anonymous denial, and Auth display-name/email retention. Both temporary accounts and their data were deleted; the cleanup check also passed. No owner records or profile were altered by these checks.
+
+The signed APK is package `com.pocketkhata.app`, versionName 1.4, versionCode 7, minimum API 26. It is zip-aligned and its v2/v3 signatures verify against the same certificate as the installed app. SHA-256: `dea2d617266be6ed3fa1b1b8ffcc0ac07ddf3b8735a8a6895a19618ee381b0e6`.
+
+Fresh testing of Profile photo picking/camera, Save Profile, Home avatar refresh, keyboard, navigation and persistence on the owner’s physical Android 12 phone remains pending. No emulator or physical-device end-to-end test is claimed for this update.

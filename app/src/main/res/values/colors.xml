@@ -1,20 +1,3 @@
-<?xml version="1.0" ?>
 <resources>
-    <color name="ink">#F1DDAE</color>
-    <color name="brand">#DEBD73</color>
-    <color name="brand_deep">#083D2E</color>
-    <color name="brand_soft">#28523C</color>
-    <color name="paper">#062E25</color>
-    <color name="muted">#B5B48E</color>
-    <color name="line">#7B8554</color>
-    <color name="brand_border">#AD9459</color>
-    <color name="brand_highlight">#EDCE84</color>
-    <color name="on_brand">#073729</color>
-    <color name="nav_surface">#0A382D</color>
-    <color name="warm">#194A36</color>
-    <color name="red">#F19988</color>
-    <color name="logo_background">#0B6148</color>
-    <color name="logo_paper">#E8C77F</color>
-    <color name="logo_accent">#E8C77F</color>
-    <color name="glass_surface">#EB154635</color>
+<color name="ink">#1C1A21</color><color name="brand">#19171D</color><color name="brand_deep">#151319</color><color name="brand_soft">#DDD5E7</color><color name="paper">#EDEAF0</color><color name="muted">#77717F</color><color name="line">#C7BFCE</color><color name="brand_border">#B6ADBF</color><color name="brand_highlight">#8B789E</color><color name="on_brand">#FAF8FC</color><color name="nav_surface">#E5DFEB</color><color name="warm">#E4C6CE</color><color name="red">#AA5268</color><color name="logo_background">#C9BED8</color><color name="logo_paper">#211B29</color><color name="logo_accent">#A47990</color><color name="logo_curve">#80A18F</color><color name="glass_surface">#E6F3F1F5</color><color name="mint">#D7E5DD</color><color name="lilac">#D7CDE3</color><color name="blush">#E4C6CF</color>
 </resources>

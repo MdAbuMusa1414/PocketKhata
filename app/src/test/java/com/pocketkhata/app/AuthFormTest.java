@@ -13,15 +13,15 @@ import org.robolectric.annotation.Config;
 @Config(sdk = 32, application = PocketApp.class)
 public class AuthFormTest {
   @Test
-  public void darkEmeraldBackgroundUsesLightSystemIcons() {
+  public void lightPastelBackgroundUsesDarkSystemIcons() {
     try (var controller = Robolectric.buildActivity(LoginActivity.class).setup()) {
       LoginActivity a = controller.get();
       a.onWindowFocusChanged(true);
       var bars =
           androidx.core.view.WindowCompat.getInsetsController(
               a.getWindow(), a.getWindow().getDecorView());
-      assertFalse(bars.isAppearanceLightStatusBars());
-      assertFalse(bars.isAppearanceLightNavigationBars());
+      assertTrue(bars.isAppearanceLightStatusBars());
+      assertTrue(bars.isAppearanceLightNavigationBars());
     }
   }
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/root" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/paper">
+    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="60dp" app:title="My Profile" app:titleTextAppearance="@style/PKToolbarTitle" app:navigationIcon="@drawable/ic_back"/>
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="22dp">
+            <TextView style="@style/PKTitle" android:text="A little about you." android:fontFamily="sans-serif-light" android:textSize="30sp"/>
+            <TextView style="@style/PKMuted" android:text="Your photo, name and contact details." android:layout_marginTop="8dp"/>
+            <com.google.android.material.imageview.ShapeableImageView android:id="@+id/profilePhoto" android:layout_width="118dp" android:layout_height="118dp" android:layout_gravity="center_horizontal" android:layout_marginTop="28dp" android:src="@drawable/ic_person" android:padding="18dp" android:background="@drawable/avatar_surface" android:contentDescription="Your profile photo" app:shapeAppearanceOverlay="@style/PKAvatarCircle" app:strokeColor="@color/on_brand" app:strokeWidth="3dp"/>
+            <com.google.android.material.button.MaterialButton android:id="@+id/changePhoto" style="@style/PKOutlined" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:layout_marginTop="12dp" android:text="Change Photo"/>
+            <com.google.android.material.card.MaterialCardView style="@style/PKCard" android:layout_marginTop="22dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:background="@drawable/glass_panel">
+                    <com.google.android.material.textfield.TextInputLayout style="@style/PKField" android:hint="Full Name">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/profileName" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPersonName" android:maxLength="60"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/PKField" android:hint="Phone Number">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/profilePhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="phone" android:maxLength="20"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/PKField" android:hint="Email Address">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/profileEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textEmailAddress" android:maxLength="200"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <TextView style="@style/PKMuted" android:text="Email is used to log in." android:textSize="11sp" android:layout_marginTop="8dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <TextView style="@style/PKMuted" android:id="@+id/profileStatus" android:text="Loading your profile…" android:textSize="12sp" android:layout_marginTop="16dp"/>
+            <ProgressBar android:id="@+id/profileProgress" android:layout_width="26dp" android:layout_height="26dp" android:layout_gravity="center_horizontal" android:layout_marginTop="10dp"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="22dp" android:paddingBottom="12dp" android:background="@color/paper">
+        <com.google.android.material.button.MaterialButton android:id="@+id/saveProfile" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Save Profile"/>
+    </LinearLayout>
+</LinearLayout>
