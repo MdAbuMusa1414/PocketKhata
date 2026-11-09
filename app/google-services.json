@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "276261740474",
+    "project_id": "pocketkhata-musa",
+    "storage_bucket": "pocketkhata-musa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276261740474:android:fe879dcb464c69c4b78783",
+        "android_client_info": {
+          "package_name": "com.pocketkhata.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8fwEk2bYgitggXUO18_oHouLJLz-i3Kk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
