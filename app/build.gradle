@@ -5,7 +5,14 @@ android {
  defaultConfig { applicationId 'com.pocketkhata.app'; minSdk 26; targetSdk 35; versionCode 1; versionName '1.0'; testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner' }
  compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
  buildTypes { release { minifyEnabled false } }
- testOptions { unitTests.includeAndroidResources = true }
+ testOptions {
+  unitTests.includeAndroidResources = true
+  unitTests.all {
+   systemProperty 'user.home', rootProject.layout.buildDirectory.dir('test-home').get().asFile.absolutePath
+   systemProperty 'robolectric.dependency.repo.url', 'https://repo.maven.apache.org/maven2'
+   maxHeapSize = '1536m'
+  }
+ }
  lint { abortOnError true }
 }
 dependencies {

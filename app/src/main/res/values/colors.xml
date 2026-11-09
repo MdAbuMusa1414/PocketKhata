@@ -1,1 +1,11 @@
-<resources><color name="ink">#182F2A</color><color name="green">#156C52</color><color name="mint">#E5F2E9</color><color name="paper">#F8F8F2</color><color name="muted">#64746B</color><color name="line">#DCE4DA</color><color name="gold">#E8B75A</color><color name="white">#FFFFFF</color></resources>
+<?xml version="1.0" ?>
+<resources>
+    <color name="ink">#182F2A</color>
+    <color name="green">#156C52</color>
+    <color name="mint">#E5F2E9</color>
+    <color name="paper">#F8F8F2</color>
+    <color name="muted">#64746B</color>
+    <color name="line">#DCE4DA</color>
+    <color name="gold">#E8B75A</color>
+    <color name="white">#FFFFFF</color>
+</resources>

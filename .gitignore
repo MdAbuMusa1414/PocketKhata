@@ -4,5 +4,8 @@ local.properties
 **/build/
 *.jks
 *.keystore
+*.p12
+signing.properties
+key.properties
 captures/
 .DS_Store

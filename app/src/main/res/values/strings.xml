@@ -1,1 +1,5 @@
-<resources><string name="app_name">PocketKhata</string><string name="database_url" translatable="false">https://pocketkhata-musa-default-rtdb.asia-southeast1.firebasedatabase.app</string></resources>
+<?xml version="1.0" ?>
+<resources>
+    <string name="app_name">PocketKhata</string>
+    <string name="database_url" translatable="false">https://pocketkhata-musa-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</resources>
