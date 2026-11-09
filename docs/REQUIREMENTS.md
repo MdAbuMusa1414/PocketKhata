@@ -16,7 +16,7 @@ Source: E-109 Final Lab Project â€” Instructions.pdf, four pages. The PDF says â
 | 9. Local setting via SharedPreferences | Monthly budget, show-settled switch and remembered email |
 | 10. Take or pick photo and show it | Both TakePicture and OpenDocument contracts; FileProvider, receipt preview and Details photo |
 | 11. Open another app via implicit Intent | ACTION_DIAL, ACTION_SEND, ACTION_VIEW |
-| Custom app name and icon | PocketKhata; original vector notebook/pocket icon |
+| Custom app name and icon | PocketKhata; original PK monogram with pocket curve |
 | Material Design and success/error Snackbar/Toast | Material 3 theme, Material dialogs/inputs/cards/chips/progress/FAB; BaseActivity.say and Toasts |
 
 ## Submission requirements beyond the app

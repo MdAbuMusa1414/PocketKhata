@@ -29,7 +29,7 @@ public class SettingsActivity extends BaseActivity {
           if (item.getItemId() == R.id.nav_settings) return true;
           Intent i = new Intent(this, HomeActivity.class);
           i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-          i.putExtra("open_loans", item.getItemId() == R.id.nav_loans);
+          i.putExtra("open_records", item.getItemId() == R.id.nav_records);
           startActivity(i);
           finish();
           return true;

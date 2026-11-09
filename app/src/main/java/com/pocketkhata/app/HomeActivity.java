@@ -24,7 +24,8 @@ public class HomeActivity extends BaseActivity {
   private SingleViewAdapter emptyAdapter;
   private View dashboard, empty;
   private String query = "", filter = "All";
-  private boolean loaded, loanTab;
+  private boolean loaded, recordsTab;
+  private String userGreeting = "Welcome to your khata";
 
   @Override
   protected void onCreate(Bundle b) {
@@ -51,11 +52,10 @@ public class HomeActivity extends BaseActivity {
         .setOnClickListener(
             v -> {
               Intent i = new Intent(this, EditActivity.class);
-              if (loanTab) i.putExtra("initial_type", "Lent");
+              if ("Lent".equals(filter) || "Borrowed".equals(filter))
+                i.putExtra("initial_type", filter);
               startActivity(i);
             });
-    findViewById(R.id.settings)
-        .setOnClickListener(v -> startActivity(new Intent(this, SettingsActivity.class)));
     ((EditText) dashboard.findViewById(R.id.search))
         .addTextChangedListener(
             new TextWatcher() {
@@ -86,14 +86,16 @@ public class HomeActivity extends BaseActivity {
             startActivity(new Intent(this, SettingsActivity.class));
             return false;
           }
-          setLoanTab(item.getItemId() == R.id.nav_loans);
+          setRecordsTab(item.getItemId() == R.id.nav_records);
           list.scrollToPosition(0);
           return true;
         });
-    loanTab =
-        b != null ? b.getBoolean("loan_tab") : getIntent().getBooleanExtra("open_loans", false);
-    nav.setSelectedItemId(loanTab ? R.id.nav_loans : R.id.nav_home);
-    setLoanTab(loanTab);
+    recordsTab =
+        b != null
+            ? b.getBoolean("records_tab")
+            : getIntent().getBooleanExtra("open_records", false);
+    nav.setSelectedItemId(recordsTab ? R.id.nav_records : R.id.nav_home);
+    setRecordsTab(recordsTab);
   }
 
   @Override
@@ -102,27 +104,30 @@ public class HomeActivity extends BaseActivity {
     setIntent(intent);
     ((BottomNavigationView) findViewById(R.id.navigation))
         .setSelectedItemId(
-            intent.getBooleanExtra("open_loans", false) ? R.id.nav_loans : R.id.nav_home);
+            intent.getBooleanExtra("open_records", false) ? R.id.nav_records : R.id.nav_home);
   }
 
   private void dlabel(int id, String text) {
     ((TextView) dashboard.findViewById(id)).setText(text);
   }
 
-  private void setLoanTab(boolean value) {
-    loanTab = value;
+  private void setRecordsTab(boolean value) {
+    recordsTab = value;
     filter = "All";
     dashboard.findViewById(R.id.spendingCard).setVisibility(value ? View.GONE : View.VISIBLE);
-    ((DashboardFilters) dashboard.findViewById(R.id.filters)).showLoansOnly(value);
-    dlabel(R.id.homeTitle, value ? "My Loans" : "My Money");
-    dlabel(R.id.listHeading, value ? "Loan Records" : "Recent Records");
+    dashboard.findViewById(R.id.balanceCards).setVisibility(value ? View.GONE : View.VISIBLE);
+    dashboard.findViewById(R.id.homeTitle).setVisibility(value ? View.VISIBLE : View.GONE);
+    ((DashboardFilters) dashboard.findViewById(R.id.filters)).showAllRecords();
+    dlabel(R.id.homeTitle, "All Records");
+    dlabel(R.id.greeting, value ? "Your complete history" : userGreeting);
+    dlabel(R.id.listHeading, value ? "Find a Record" : "Recent Records");
     render();
   }
 
   @Override
   protected void onSaveInstanceState(Bundle b) {
     super.onSaveInstanceState(b);
-    b.putBoolean("loan_tab", loanTab);
+    b.putBoolean("records_tab", recordsTab);
   }
 
   @Override
@@ -130,9 +135,9 @@ public class HomeActivity extends BaseActivity {
     super.onStart();
     if (repo == null || !requireLogin()) return;
     String name = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
-    dlabel(
-        R.id.greeting,
-        name == null || name.trim().isEmpty() ? "Welcome to your khata" : "Hello, " + name);
+    userGreeting =
+        name == null || name.trim().isEmpty() ? "Welcome to your khata" : "Hello, " + name;
+    dlabel(R.id.greeting, recordsTab ? "Your complete history" : userGreeting);
     listener =
         repo.listen(
             new Repository.Rows() {
@@ -195,23 +200,11 @@ public class HomeActivity extends BaseActivity {
                 ? Money.format(s.spent - budget) + " over budget"
                 : Money.format(budget - s.spent) + " left of " + Money.format(budget));
     boolean show = Prefs.user(this).getBoolean("showSettled", true);
-    List<Entry> visible = new ArrayList<>();
-    for (Entry e : entries) {
-      if (loanTab && !e.isLoan()) continue;
-      if (!show && e.isLoan() && e.isSettled()) continue;
-      if (!filter.equals("All") && !filter.equals(e.getType())) continue;
-      String hay =
-          (e.getTitle() + " " + e.getPerson() + " " + e.getCategory() + " " + e.getNote())
-              .toLowerCase(Locale.ROOT);
-      if (hay.contains(query)) visible.add(e);
-    }
+    List<Entry> visible = LedgerRecords.select(entries, recordsTab, show, filter, query);
     adapter.submit(visible);
     emptyAdapter.setShown(visible.isEmpty() && loaded);
     ((TextView) empty.findViewById(R.id.emptyTitle))
-        .setText(
-            query.isEmpty()
-                ? (loanTab ? "No loans here yet" : "No records here yet")
-                : "No matching records");
+        .setText(query.isEmpty() ? "No records here yet" : "No matching records");
     ((TextView) empty.findViewById(R.id.emptySubtitle))
         .setText(
             query.isEmpty()

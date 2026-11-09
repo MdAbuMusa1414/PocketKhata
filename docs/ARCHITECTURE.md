@@ -69,3 +69,7 @@ Budget is a device-local per-account preference. Only Expense entries count towa
 `SingleViewAdapter` and `ConcatAdapter` combine the dashboard header, reusable record rows and empty state in a single RecyclerView, so the header scrolls out of the way instead of squeezing records into a short fixed area.
 
 The bottom navigation opens Home, Loans and Settings. UI labels translate the existing Firebase type strings `Expense`, `Lent`, `Borrowed`; existing account data is not migrated or rewritten during upgrade.
+
+## Version 1.2
+
+The three bottom destinations are Home, Records and Settings. `LedgerRecords.select` applies shared search/type/paid-loan filtering and caps Home to five recent matches while returning the complete matching history for Records. Settings has no duplicate header button. `DashboardFilters` uses weighted LinearLayout rows with single-selection Chips. The original PK vector monogram and maroon/cream palette are shared by the launcher, splash, authentication and main screens.

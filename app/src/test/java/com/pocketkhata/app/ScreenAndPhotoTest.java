@@ -171,14 +171,48 @@ public class ScreenAndPhotoTest {
         root.findViewById(R.id.navigation);
     assertEquals(3, nav.getMenu().size());
     assertEquals("Home", nav.getMenu().findItem(R.id.nav_home).getTitle());
-    assertEquals("Loans", nav.getMenu().findItem(R.id.nav_loans).getTitle());
+    assertEquals("Records", nav.getMenu().findItem(R.id.nav_records).getTitle());
     assertEquals("Settings", nav.getMenu().findItem(R.id.nav_settings).getTitle());
+  }
+
+  @Test
+  public void settingsIsOnlyInTheBottomNavigation() {
+    View root = home(false);
+    assertEquals(0, settingsShortcutCount(root));
+    com.google.android.material.bottomnavigation.BottomNavigationView nav =
+        root.findViewById(R.id.navigation);
+    assertEquals("Settings", nav.getMenu().findItem(R.id.nav_settings).getTitle());
+  }
+
+  private int settingsShortcutCount(View view) {
+    int count =
+        view instanceof ImageButton
+                && "Settings"
+                    .contentEquals(
+                        view.getContentDescription() == null ? "" : view.getContentDescription())
+            ? 1
+            : 0;
+    if (view instanceof ViewGroup) {
+      ViewGroup group = (ViewGroup) view;
+      for (int i = 0; i < group.getChildCount(); i++)
+        count += settingsShortcutCount(group.getChildAt(i));
+    }
+    return count;
   }
 
   @Test
   public void renderUpdatedScreens() throws Exception {
     File out = new File("build/outputs/ui-previews");
     assertTrue(out.isDirectory() || out.mkdirs());
+    android.graphics.drawable.Drawable logo = context().getDrawable(R.drawable.ic_logo);
+    Bitmap brand = Bitmap.createBitmap(512, 512, Bitmap.Config.ARGB_8888);
+    logo.setBounds(0, 0, 512, 512);
+    logo.draw(new android.graphics.Canvas(brand));
+    try (FileOutputStream stream = new FileOutputStream(new File(out, "brand-mark.png"))) {
+      brand.compress(Bitmap.CompressFormat.PNG, 100, stream);
+    }
+    brand.recycle();
+
     for (String name :
         new String[] {"login", "home-sample", "add-expense", "add-loan", "settings"}) {
       View root;

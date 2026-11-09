@@ -2,23 +2,23 @@
 
 A Java + XML Android app for personal expenses, money lent, and money borrowed. Built for Mobile Application and Development Lab (0613-410).
 
-**[Download APK](https://github.com/MdAbuMusa1414/PocketKhata/releases/download/v1.1.1/PocketKhata-v1.1.1.apk) · [Release v1.1.1](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.1.1)**
+**[Download APK](https://raw.githubusercontent.com/MdAbuMusa1414/PocketKhata/main/distribution/PocketKhata-v1.2.apk) · [Release v1.2](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.2)**
 
 Repository owner: **MdAbuMusa1414**. Before submission, add your exact student name and student ID here; they have not been provided.
 
-## Version 1.1.1 navigation fix
+## Design and navigation
 
-Home includes all four filters: All, Expenses, Give a Loan and Take a Loan. Navigation icons/labels have an 80 dp bar and system-bar insets are handled once to prevent clipping on Android 12 devices.
+PocketKhata 1.2 uses an original **PK** monogram (Pocket + Khata) with a curved pocket edge, a maroon/cream palette, and a single Settings destination in the bottom navigation.
 
-## Version 1.1 design
+- **Home:** monthly spending, budget, unpaid-loan balances and five recent matching records.
+- **Records:** the complete matching history, including expenses and both loan directions.
+- **Settings:** budget, preferences, account and logout.
 
-Navy/blue/amber theme, adaptive notebook icon, Home/Loans/Settings navigation, a fully scrolling dashboard, contextual Expense / Give a Loan / Take a Loan forms, a fixed Save button and optional photo/contact details behind a separate control. The original v1.0 Release remains available for the course requirement.
-
-Install 1.1 over the original app to preserve data: the package ID, Firebase data structure, preference keys and signing identity are unchanged.
+All / Expenses / Give a Loan / Take a Loan filters remain available. Updates use the same app ID, signing identity, Firebase structure and preference keys. The original APK-attached v1.0 Release remains available for the course requirement.
 
 ## Features
 
-- Seven Activities: Splash, Login, Register, Home, Add/Edit, Entry Details, Settings. Home also provides a Loans tab.
+- Seven Activities: Splash, Login, Register, Home, Add/Edit, Entry Details, Settings. Home also provides a Records tab.
 - Firebase Authentication: register, login, password reset, logout, persistent login.
 - Private Firebase Realtime Database records under `users/{uid}/entries/{entryId}`, with live listeners.
 - Create, view, edit and delete Expense, Lent and Borrowed entries.
@@ -29,7 +29,7 @@ Install 1.1 over the original app to preserve data: the package ID, Firebase dat
 - Camera capture and gallery/document photo selection, receipt preview, resizing and EXIF orientation correction.
 - Open the dialer for a saved contact; share entries and summaries; open this GitHub project.
 - SharedPreferences for remembered email, each user's local budget, and settled-loan visibility.
-- Custom notebook icon, Material 3 theme, Snackbar/Toast feedback, input validation.
+- Original PK monogram icon, Material 3 theme, Snackbar/Toast feedback, input validation.
 
 ## Run in Android Studio
 

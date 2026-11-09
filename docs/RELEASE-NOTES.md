@@ -1,11 +1,9 @@
-PocketKhata 1.1.1 fixes the navigation and missing Home filters reported on the owner's Android 12 phone.
+PocketKhata 1.2 adds a maroon/cream identity and an original PK monogram (Pocket + Khata) with a curved pocket edge for both the launcher icon and in-app logo.
 
-- Home now shows **All, Expenses, Give a Loan, Take a Loan** in two readable rows.
-- Home / Loans / Settings icons and labels have a full-height navigation bar. System-bar spacing is consumed once at the activity root, so Material navigation does not add it again and clip its contents.
-- Loan-only filters remain available on the Loans tab.
+Settings now appears only in the bottom navigation. The middle tab is **Records**, showing the full history of expenses and personal loans; Home shows five recent matches. Home's Give a Loan / Take a Loan filters remain available.
 
-Download `PocketKhata-v1.1.1.apk` and choose **Update** over the installed app. The app ID, signing certificate, accounts, Firebase data and preference keys remain compatible. Do not uninstall to update. Android 8.0 or newer.
+Download `PocketKhata-v1.2.apk` and choose **Update** over the installed app. App ID, signing certificate, Firebase records and local preferences remain compatible. Do not uninstall to update. Android 8.0 or newer.
 
-Validation is recorded in docs/TESTING.md, including navigation icon/label bounds with realistic status/navigation-bar insets and visibility/layout checks for all four Home filters. The fix still needs confirmation on the owner's actual phone.
+Validation: release compilation, 20 automated Android/data tests, zero Android lint errors, signature verification and comparison with the original signing identity. Fresh testing of this version on the owner's physical Android 12 phone is still needed. The prior live Firebase checks remain applicable to the unchanged backend.
 
-The original v1.0 Release remains available for the semester requirement; the separate lab report remains deferred.
+The original APK-attached v1.0 Release is retained for the semester requirement. The separate lab report remains deferred.

@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="64dp" android:height="64dp" android:viewportWidth="64" android:viewportHeight="64">
-    <path android:fillColor="#172D55" android:pathData="M13,2H51Q62,2 62,13V51Q62,62 51,62H13Q2,62 2,51V13Q2,2 13,2Z"/>
-    <path android:fillColor="#FFFFFF" android:pathData="M18,13H46Q50,13 50,17V48Q50,52 46,52H18Q14,52 14,48V17Q14,13 18,13Z"/>
-    <path android:fillColor="#FFBF61" android:pathData="M21,13H26V52H21Z"/>
-    <path android:fillColor="#365CF5" android:pathData="M32,25H43V41H32ZM35,28V32H40V28Z"/>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="64dp" android:height="64dp" android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="@color/brand_deep" android:pathData="M24,0H84Q108,0 108,24V84Q108,108 84,108H24Q0,108 0,84V24Q0,0 24,0Z"/>
+    <path android:fillColor="@color/logo_paper" android:fillType="evenOdd" android:pathData="M22,28H40C53,28 59,34 59,45C59,56 52,62 40,62H32V79H22ZM32,38V52H40C46,52 49,50 49,45C49,40 45,38 40,38Z"/>
+    <path android:fillColor="@color/logo_accent" android:pathData="M55,29H64V48L76,29H87L71,53L89,79H78L64,61V79H55Z"/>
+    <path android:fillColor="@android:color/transparent" android:strokeColor="@color/logo_accent" android:strokeWidth="3" android:strokeLineCap="round" android:pathData="M23,84Q54,100 85,84"/>
 </vector>

@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
 <resources>
     <style name="Theme.PocketKhata" parent="Theme.Material3.Light.NoActionBar">
-        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimary">@color/brand</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorPrimaryContainer">@color/mint</item>
-        <item name="colorOnPrimaryContainer">@color/green</item>
-        <item name="colorSecondary">@color/green</item>
-        <item name="colorSecondaryContainer">@color/mint</item>
-        <item name="colorOnSecondaryContainer">@color/green</item>
+        <item name="colorPrimaryContainer">@color/brand_soft</item>
+        <item name="colorOnPrimaryContainer">@color/brand</item>
+        <item name="colorSecondary">@color/brand</item>
+        <item name="colorSecondaryContainer">@color/brand_soft</item>
+        <item name="colorOnSecondaryContainer">@color/brand</item>
         <item name="colorSurface">@color/paper</item>
         <item name="colorOnSurface">@color/ink</item>
         <item name="colorOnSurfaceVariant">@color/muted</item>
@@ -68,7 +68,10 @@
         <item name="cardElevation">0dp</item>
     </style>
     <style name="PKNavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">@color/mint</item>
+        <item name="android:color">@color/brand_soft</item>
     </style>
-    <style name="PKNavigationLabel" parent="TextAppearance.Material3.LabelMedium"><item name="android:textSize">12sp</item><item name="android:fontFamily">sans-serif-medium</item></style>
+    <style name="PKNavigationLabel" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
 </resources>

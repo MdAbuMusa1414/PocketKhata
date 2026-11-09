@@ -23,3 +23,7 @@ Owner screenshots showed missing loan filters on Home and clipped bottom-navigat
 A new Android 12 regression test dispatches 48/96 px navigation insets and checks all three selected icons/labels remain within the bar without overlapping. A second test verifies All, Expenses, Give a Loan and Take a Loan remain visible and fit into two columns; the Loans tab retains both directions. These tests include the real base activity inset handler and Material navigation widget. Fresh confirmation on the owner's phone remains required.
 
 Version 1.1.1 verification complete: 17 automated tests passed; Android lint has zero errors; the signed release APK passed signature verification and has the same signing identity as the installed versions. Actual-phone confirmation of the fix is still pending.
+
+## Version 1.2 brand and Records verification
+
+20 tests pass and Android lint reports zero errors. New tests verify Settings has no duplicate header shortcut, Records includes expense/given/taken entries beyond Home's five recent matches, and search/type/paid-loan filters still work. Navigation inset tests and photo/auth/money checks continue to pass. The PK brand preview is rendered from the exact application vector. This version's physical-phone check is pending.

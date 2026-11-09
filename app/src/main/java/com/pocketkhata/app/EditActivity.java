@@ -58,11 +58,12 @@ public class EditActivity extends BaseActivity {
         new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, CATEGORIES);
     a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     category.setAdapter(a);
+    String initialType = getIntent().getStringExtra("initial_type");
     ((RadioGroup) findViewById(R.id.type))
         .check(
-            "Lent".equals(getIntent().getStringExtra("initial_type"))
+            "Lent".equals(initialType)
                 ? R.id.type_lent
-                : R.id.type_expense);
+                : "Borrowed".equals(initialType) ? R.id.type_borrowed : R.id.type_expense);
     EntryFormUi.bind(findViewById(R.id.root));
     findViewById(R.id.extrasToggle)
         .setOnClickListener(

@@ -40,11 +40,11 @@ public final class DashboardFilters extends LinearLayout {
     if (changed && listener != null) listener.selected(id);
   }
 
-  public void showLoansOnly(boolean loansOnly) {
-    findViewById(R.id.filter_expense).setVisibility(loansOnly ? View.GONE : View.VISIBLE);
+  public void showAllRecords() {
+    findViewById(R.id.filter_expense).setVisibility(View.VISIBLE);
     findViewById(R.id.filter_lent).setVisibility(View.VISIBLE);
     findViewById(R.id.filter_borrowed).setVisibility(View.VISIBLE);
-    ((Chip) findViewById(R.id.filter_all)).setText(loansOnly ? "All Loans" : "All");
+    ((Chip) findViewById(R.id.filter_all)).setText("All");
     check(R.id.filter_all);
   }
 }

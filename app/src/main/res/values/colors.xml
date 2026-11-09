@@ -1,14 +1,16 @@
 <?xml version="1.0" ?>
 <resources>
-    <color name="ink">#17253F</color>
-    <color name="green">#365CF5</color>
-    <color name="navy">#172D55</color>
-    <color name="mint">#EAF0FF</color>
-    <color name="paper">#F3F6FC</color>
-    <color name="muted">#65748B</color>
-    <color name="line">#E0E7F2</color>
-    <color name="gold">#FFBF61</color>
+    <color name="ink">#35252D</color>
+    <color name="brand">#843C50</color>
+    <color name="brand_deep">#5A2638</color>
+    <color name="brand_soft">#F5E5E9</color>
+    <color name="paper">#FFF8F3</color>
+    <color name="muted">#806B72</color>
+    <color name="line">#EBDADD</color>
+    <color name="gold">#EBBD96</color>
     <color name="white">#FFFFFF</color>
-    <color name="warm">#FFF3DF</color>
-    <color name="red">#B93D4D</color>
+    <color name="warm">#F9EBDD</color>
+    <color name="red">#B33549</color>
+    <color name="logo_paper">#FFF9F3</color>
+    <color name="logo_accent">#EBBD96</color>
 </resources>

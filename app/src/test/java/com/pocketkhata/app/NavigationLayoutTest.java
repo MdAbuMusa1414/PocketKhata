@@ -55,7 +55,7 @@ public class NavigationLayoutTest {
             "Material navigation must not reserve the bottom inset again",
             0,
             nav.getPaddingBottom());
-        for (int selected : new int[] {R.id.nav_home, R.id.nav_loans, R.id.nav_settings}) {
+        for (int selected : new int[] {R.id.nav_home, R.id.nav_records, R.id.nav_settings}) {
           nav.setSelectedItemId(selected);
           root.measure(
               View.MeasureSpec.makeMeasureSpec(720, View.MeasureSpec.EXACTLY),
@@ -88,7 +88,7 @@ public class NavigationLayoutTest {
             ApplicationProvider.getApplicationContext(), R.style.Theme_PocketKhata);
     View root = LayoutInflater.from(context).inflate(R.layout.dashboard_header, null);
     DashboardFilters filters = root.findViewById(R.id.filters);
-    filters.showLoansOnly(false);
+    filters.showAllRecords();
     root.measure(
         View.MeasureSpec.makeMeasureSpec(720, View.MeasureSpec.EXACTLY),
         View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
@@ -105,8 +105,12 @@ public class NavigationLayoutTest {
     assertTrue(take.getRight() <= filters.getWidth());
     assertEquals("Give a Loan", ((TextView) give).getText().toString());
     assertEquals("Take a Loan", ((TextView) take).getText().toString());
-    filters.showLoansOnly(true);
-    assertEquals(View.GONE, root.findViewById(R.id.filter_expense).getVisibility());
+    filters.check(R.id.filter_lent);
+    assertTrue(((com.google.android.material.chip.Chip) give).isChecked());
+    assertFalse(
+        ((com.google.android.material.chip.Chip) root.findViewById(R.id.filter_all)).isChecked());
+    filters.showAllRecords();
+    assertEquals(View.VISIBLE, root.findViewById(R.id.filter_expense).getVisibility());
     assertEquals(View.VISIBLE, give.getVisibility());
     assertEquals(View.VISIBLE, take.getVisibility());
   }
