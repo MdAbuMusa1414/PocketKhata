@@ -4,8 +4,18 @@ A Java + XML Android app for personal expenses, money lent, and money borrowed. 
 
 **[Download APK](https://raw.githubusercontent.com/MdAbuMusa1414/PocketKhata/main/distribution/PocketKhata-v1.4.apk) · [Release v1.4](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.4)**
 
-Repository owner: **MdAbuMusa1414**. Before submission, add your exact student name and student ID here; they have not been provided.
+Repository owner: **MdAbuMusa1414**
 
+## Student Information
+
+- Name: Abu Musa
+- Roll: 27
+- Batch: E-109
+- Department: Computer Science and Engineering (CSE)
+- University: Dhaka International University
+- Course: Mobile App Development
+- Course Code: 0613-410
+- Submitted to: Ekramul Haque Amin
 ## Design and navigation
 
 PocketKhata 1.4 uses a **soft lavender, blush pink, mint and black** palette inspired by the owner’s supplied interface reference. Frosted panels, pill controls and floating navigation share the same colors as the original PK monogram (Pocket + Khata).
