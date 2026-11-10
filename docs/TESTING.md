@@ -42,4 +42,6 @@ Ten live Firebase profile checks pass: own-profile write/read and changes, photo
 
 The signed APK is package `com.pocketkhata.app`, versionName 1.4, versionCode 7, minimum API 26. It is zip-aligned and its v2/v3 signatures verify against the same certificate as the installed app. SHA-256: `dea2d617266be6ed3fa1b1b8ffcc0ac07ddf3b8735a8a6895a19618ee381b0e6`.
 
-Fresh testing of Profile photo picking/camera, Save Profile, Home avatar refresh, keyboard, navigation and persistence on the owner’s physical Android 12 phone remains pending. No emulator or physical-device end-to-end test is claimed for this update.
+At release time, physical-device testing was pending. On 10 November 2026 (Bangladesh), the owner reported that all six guided phone checks work: Profile photo/name/phone saving and Home refresh; adding Expense/Give a Loan/Take a Loan records; editing, photo attachment, paid-back status and deletion; budget changes and Summary; opening Call Contact and Share; and logout/login with records and profile retained. This is owner-reported manual testing on the previously identified Android 12 / ColorOS 12.1 phone, not a newly observed automated device run.
+
+Separate camera capture versus gallery selection, rotation/keyboard edge cases and offline network transitions were not individually described in that report. Automated validation and UID privacy checks remain documented above. No full Android-emulator end-to-end test is claimed.

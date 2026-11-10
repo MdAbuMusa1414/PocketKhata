@@ -37,4 +37,17 @@ Version 1.3: Home-এর All দিয়ে সব matching হিসাব দে
 6. ছবি বাছার সময় Cancel বা ফোন rotate করলে কোনো crash বা অসম্পূর্ণ save হচ্ছে কি না দেখো।
 7. Lavender/pink/mint/black logo ও একই রঙের screen, button, navigation দেখো। Home/Summary/Settings-এর icon ও লেখা এবং keyboard খোলা অবস্থায় Save Profile পড়া যায় কি না দেখো।
 
-এই version-এর নতুন profile ও theme এখনও তোমার ফোনে পরীক্ষা করা বাকি।
+Release তৈরির সময় এই version-এর ফোনের পরীক্ষা বাকি ছিল। পরবর্তী ফল নিচে নথিভুক্ত আছে।
+
+## ব্যবহারকারীর জানানো পরীক্ষার ফল — ১০ নভেম্বর ২০২৬
+
+ব্যবহারকারী জানিয়েছেন, পরবর্তী নির্দেশনার ১–৬ নম্বর পরীক্ষা ফোনে করে সব কাজ করছে:
+
+1. Profile-এর ছবি, নাম ও ফোন save; Home-এ ছবি ও নাম বদলানো।
+2. Expense, Give a Loan ও Take a Loan হিসাব যোগ।
+3. Edit, ছবি যোগ, Paid Back এবং Delete।
+4. Budget বদলানো ও Summary দেখা।
+5. Call Contact এবং Share খোলা।
+6. Logout/login-এর পরে হিসাব ও Profile থাকা।
+
+এটি ব্যবহারকারীর নিজে করা পরীক্ষার প্রতিবেদন। Camera বনাম gallery, rotation, keyboard এবং offline অবস্থার পৃথক ফল এখনও জানানো হয়নি।
