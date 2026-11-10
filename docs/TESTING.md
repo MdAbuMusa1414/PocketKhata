@@ -45,3 +45,11 @@ The signed APK is package `com.pocketkhata.app`, versionName 1.4, versionCode 7,
 At release time, physical-device testing was pending. On 10 November 2026 (Bangladesh), the owner reported that all six guided phone checks work: Profile photo/name/phone saving and Home refresh; adding Expense/Give a Loan/Take a Loan records; editing, photo attachment, paid-back status and deletion; budget changes and Summary; opening Call Contact and Share; and logout/login with records and profile retained. This is owner-reported manual testing on the previously identified Android 12 / ColorOS 12.1 phone, not a newly observed automated device run.
 
 Separate camera capture versus gallery selection, rotation/keyboard edge cases and offline network transitions were not individually described in that report. Automated validation and UID privacy checks remain documented above. No full Android-emulator end-to-end test is claimed.
+
+## Owner Windows Gradle and Android Studio verification — 10 November 2026
+
+The owner supplied screenshots showing Gradle 8.9 running on Windows 11 with Android Studio bundled Java 21.0.10, exit code 0 and `WRAPPER_RUNTIME_PASS`. The subsequent `help --no-daemon --console=plain --stacktrace` finished with `BUILD SUCCESSFUL in 52s`, exit code 0 and `PROJECT_CONFIGURATION_PASS`. The visible excerpts do not establish whether the helper used its curl fallback or whether the initial Java download succeeded; no specific network root cause is claimed.
+
+After the helper reopened Android Studio, the owner supplied a screenshot showing the PocketKhata Sync panel with a green check and `finished` at 19:43 Bangladesh time (1 minute, 9 seconds), the app run configuration and completed background tasks. This confirms the previously failing IDE sync completed on the owner’s PC. Optional AGP/Gradle upgrade suggestions remained visible. This evidence is a successful configuration/sync, not a new Windows APK compilation or connected-device run.
+
+The owner has now cloned/opened the project in Android Studio and completed sync. Reviewing/modifying code, adding the exact student identity, connecting their IDE GitHub account and making their own meaningful commit/push remain to be completed. Earlier release builds and source publication were performed through the authorized cloud command-line workflow.

@@ -16,7 +16,7 @@ Code ইতিমধ্যে এই public repository-তে আছে। APK-�
 
 10 November 2026-এ ব্যবহারকারীর PC-তে Gradle 8.9 download বারবার প্রায় ১০ সেকেন্ডে connection timeout হয়েছে। Wrapper এখন একই official Gradle 8.9 ZIP-এর সরাসরি Gradle-owned GitHub Release address ব্যবহার করে, timeout ১২০ সেকেন্ড এবং official SHA-256 checksum যাচাই করে। Gradle/AGP বা app version পরিবর্তন করা হয়নি।
 
-পুরোনো clone-এ **Ctrl+T → Update Project** দিয়ে পরিবর্তন নিয়ে **Try Again / Sync Project with Gradle Files** চালাও। Download এখনও আটকে গেলে browser-এ wrapper-এর official URL খুলে download হয় কি না পরীক্ষা করে network/proxy-এর সমস্যা নির্ণয় করো। এই পরিবর্তন দিয়ে এখানে নতুন করে official ZIP download, checksum verification ও `./gradlew --version` সফল হয়েছে। ব্যবহারকারীর Windows PC-তে sync-এর ফল এখনও নিশ্চিত করা বাকি।
+পুরোনো clone-এ **Ctrl+T → Update Project** দিয়ে পরিবর্তন নিয়ে **Try Again / Sync Project with Gradle Files** চালাও। Download এখনও আটকে গেলে browser-এ wrapper-এর official URL খুলে download হয় কি না পরীক্ষা করে network/proxy-এর সমস্যা নির্ণয় করো। এই পরিবর্তন দিয়ে এখানে নতুন করে official ZIP download, checksum verification ও `./gradlew --version` সফল হয়েছে। পরবর্তী Windows setup ও IDE sync-এর সফল ফল নিচে নথিভুক্ত আছে।
 
 ## এক ফাইলে Windows diagnostic report
 
@@ -24,7 +24,7 @@ Code ইতিমধ্যে এই public repository-তে আছে। APK-�
 
 Report-এ local wrapper-এর URL/timeout/checksum, commit, IDE-linked project path ও Gradle configuration, standard bundled Java version, proxy environment variable আছে কি না, দুই official download URL-এর HTTP/সময় এবং সাম্প্রতিক IDE log-এর নির্দিষ্ট error label/source থাকবে। Credential values বা পূর্ণ IDE log সংগ্রহ করে না। Project/IDE settings বদলায় না এবং report স্বয়ংক্রিয়ভাবে কোথাও upload করে না। ব্যবহারকারী report দেখে নিজে chat-এ দিতে পারবেন।
 
-চারটি embedded PowerShell command-এর syntax ও synthetic XML/log সংগ্রহ PowerShell 7.4.6-এ পরীক্ষা করা হয়েছে। Test fixture-এর unrelated/private text বাদ থাকার পরীক্ষাও পাস করেছে। পুরো CMD-টি ব্যবহারকারীর Windows PC-তে এখনও চালানো হয়নি; Windows curl ফল Java/Android Studio-র network result-এর সঙ্গে মিলিয়ে ব্যাখ্যা করতে হবে।
+চারটি embedded PowerShell command-এর syntax ও synthetic XML/log সংগ্রহ PowerShell 7.4.6-এ পরীক্ষা করা হয়েছে। Test fixture-এর unrelated/private text বাদ থাকার পরীক্ষাও পাস করেছে। ব্যবহারকারী Windows-এ diagnostic চালিয়ে report দিয়েছেন; দুই HEAD probe HTTP 200 পেয়েছে। এটি Java download সফল হওয়ার পৃথক প্রমাণ নয়।
 
 ## রিপোর্ট পাওয়ার পর: Java দিয়ে Gradle পরীক্ষা ও প্রয়োজন হলে setup
 
@@ -36,7 +36,7 @@ Helper রিপোর্টে পাওয়া standard project ও bundled Jav
 
 Wrapper চালু হলে `help --no-daemon --console=plain --stacktrace` দিয়ে project/plugin configuration পরীক্ষা করে। দুটো পাস হলে Android Studio নতুন করে project খুলবে। Desktop-এর `PocketKhata-Gradle-Setup.txt`-তে fresh ফল পাওয়া যাবে; failure হলে report Notepad-এ খুলবে। Helper project source, machine-wide Java, Gradle version, credentials বা app data পরিবর্তন করে না। Automatic setup সফল হওয়া আর Android Studio sync সফল হওয়া আলাদাভাবে নিশ্চিত করতে হবে।
 
-Verification: PowerShell syntax; URL-to-cache hashes matched against Gradle 8.9's actual `PathAssembler`; invalid checksum rejection before cache writes; repeat-run behavior and preservation of an existing ZIP; actual Java wrapper invocation. A separate real official ZIP test verifies the wrapper can install from the seeded cache with Java HTTP/HTTPS network access blocked. The full Windows/Android Studio workflow still requires owner execution.
+Verification: PowerShell syntax; URL-to-cache hashes matched against Gradle 8.9's actual `PathAssembler`; invalid checksum rejection before cache writes; repeat-run behavior and preservation of an existing ZIP; actual Java wrapper invocation. A separate real official ZIP test verifies the wrapper can install from the seeded cache with Java HTTP/HTTPS network access blocked. The owner subsequently supplied Windows wrapper/project-configuration pass results and a successful Android Studio sync screenshot; details are in `TESTING.md`. The visible excerpts do not show which download branch ran.
 
 ## নিজের account থেকে অর্থপূর্ণ পরিবর্তন push করো
 
@@ -46,6 +46,6 @@ Verification: PowerShell syntax; URL-to-cache hashes matched against Gradle 8.9'
 4. **Git → Manage Remotes**-এ `origin` উপরের repository কি না দেখো। **Git → Push** দিয়ে push করো। Update/rejected message এলে আগে remote changes নিয়ে সমাধান করো; force push ব্যবহার করার প্রয়োজন নেই।
 5. Browser-এ repository খুলে নিজের পরিবর্তন ও commit দেখো।
 
-Publication এখন পর্যন্ত অনুমোদিত command-line connection দিয়ে হয়েছে। নিজের PC-তে Android Studio থেকে clone/connect/review/modify/push করার ধাপ এখনও সম্পন্ন করা বাকি। আগের কাজ Android Studio থেকে হয়েছিল বলে দাবি করবে না বা commit-এর তারিখ বদলাবে না।
+ব্যবহারকারী নিজের PC-তে Android Studio দিয়ে clone/open ও sync করেছেন। IDE-তে GitHub account সংযোগ, code review/modification ও নিজের commit/push এখনও বাকি। আগের cloud publication-কে Android Studio থেকে করা কাজ হিসেবে উল্লেখ করবে না।
 
 Repository public রাখবে। Private signing key, signing password, account password, OTP বা token repository/চ্যাটে দেবে না। একই app-এর ভবিষ্যৎ update sign করতে বর্তমান signing identity প্রয়োজন।
