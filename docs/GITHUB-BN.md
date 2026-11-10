@@ -12,6 +12,12 @@ Code ইতিমধ্যে এই public repository-তে আছে। APK-�
 4. Gradle sync শেষ হতে দাও। প্রয়োজন হলে Android Studio-র দেখানো Android SDK 35 install করো। Gradle-এর জন্য JDK 17 বা compatible bundled JDK ব্যবহার করো। কোনো sync error এলে তার exact message দেখে সমাধান করতে হবে।
 5. Project panel-এ `app/src/main/java/com/pocketkhata/app` এবং `app/src/main/res/layout` দেখো। এগুলো Java code ও screen XML।
 
+### Gradle distribution download-এ connection timeout হলে
+
+10 November 2026-এ ব্যবহারকারীর PC-তে Gradle 8.9 download বারবার প্রায় ১০ সেকেন্ডে connection timeout হয়েছে। Wrapper এখন একই official Gradle 8.9 ZIP-এর সরাসরি Gradle-owned GitHub Release address ব্যবহার করে, timeout ১২০ সেকেন্ড এবং official SHA-256 checksum যাচাই করে। Gradle/AGP বা app version পরিবর্তন করা হয়নি।
+
+পুরোনো clone-এ **Ctrl+T → Update Project** দিয়ে পরিবর্তন নিয়ে **Try Again / Sync Project with Gradle Files** চালাও। Download এখনও আটকে গেলে browser-এ wrapper-এর official URL খুলে download হয় কি না পরীক্ষা করে network/proxy-এর সমস্যা নির্ণয় করো। এই পরিবর্তন দিয়ে এখানে নতুন করে official ZIP download, checksum verification ও `./gradlew --version` সফল হয়েছে। ব্যবহারকারীর Windows PC-তে sync-এর ফল এখনও নিশ্চিত করা বাকি।
+
 ## নিজের account থেকে অর্থপূর্ণ পরিবর্তন push করো
 
 1. **Settings → Version Control → GitHub** থেকে নিজের account-এ browser দিয়ে login করো।
