@@ -24,7 +24,7 @@ Source: E-109 Final Lab Project â€” Instructions.pdf, four pages. The PDF says â
 | Requirement | Status / action |
 |---|---|
 | Public GitHub repository | Owner created https://github.com/MdAbuMusa1414/PocketKhata |
-| Connect from Android Studio and push from first day | Project includes Git history and configured origin. Owner account connection and push permission verified; publication used that authorized command-line connection. The owner still needs to open/connect/push from Android Studio on their PC |
+| Connect from Android Studio and push from first day | Project includes Git history and configured origin. Owner has cloned/opened the project and supplied successful Android Studio sync evidence on 10 November 2026. IDE account connection, review/modification and owner commit/push remain. Earlier publication used the authorized cloud command-line connection |
 | Regular meaningful commits | Prepared history records actual development stages; continue making meaningful commits when modifying the app |
 | README with app name, student name/ID, features, run instructions | README supplied; exact student name and ID still need to be added by owner |
 | GitHub Release v1.0 with attached APK | Signed APK prepared for [Release v1.0](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.0); check the release page for the published asset |
