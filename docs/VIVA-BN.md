@@ -2,6 +2,8 @@
 
 নাম: Abu Musa · Roll: 27 · Batch: E-109 · CSE, Dhaka International University
 
+হাতে-কলমে শেখার ক্রম ও code-change exercise: [HANDS-ON-BN.md](HANDS-ON-BN.md)।
+
 এই নোট পড়ে নিজের ফোনে কাজগুলো করে এবং সংশ্লিষ্ট Java/XML খুলে বোঝো। কোনো উত্তর বুঝতে না পারলে নিজের ভাষায় ব্যাখ্যা করা পর্যন্ত ওই অংশ অনুশীলন করো।
 
 ## ১. অ্যাপের কাজ কী?
