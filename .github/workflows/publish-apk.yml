@@ -1,4 +1,4 @@
-name: Publish verified PocketKhata APK
+name: Publish verified PocketKhata submission
 
 on:
   workflow_dispatch:
@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - distribution/PocketKhata-v1.4.apk
+      - distribution/PocketKhata_Lab_Report_Abu_Musa_Roll_27.pdf
       - .github/workflows/publish-apk.yml
 
 permissions:
@@ -15,18 +16,26 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the source and signed APK
+      - name: Check out the source and reviewed submission artifacts
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-      - name: Verify the exact locally tested APK
+      - name: Verify the tested APK and reviewed report
         run: |
           printf '%s\n' 'dea2d617266be6ed3fa1b1b8ffcc0ac07ddf3b8735a8a6895a19618ee381b0e6  distribution/PocketKhata-v1.4.apk' | sha256sum --check
-      - name: Publish version 1.4
+          printf '%s\n' '51cdb27a8a9073fb34bb843452bbd7865325d8904b12758596c2aacba98f518f  distribution/PocketKhata_Lab_Report_Abu_Musa_Roll_27.pdf' | sha256sum --check
+      - name: Publish current app and course submission attachments
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           if ! gh release view v1.4 --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             gh release create v1.4 --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title 'PocketKhata v1.4' --notes-file docs/RELEASE-NOTES.md
           fi
-          if ! gh release view v1.4 --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name' | grep -Fxq 'PocketKhata-v1.4.apk'; then
-            gh release upload v1.4 distribution/PocketKhata-v1.4.apk --repo "$GITHUB_REPOSITORY"
-          fi
+          gh release view v1.0 --repo "$GITHUB_REPOSITORY" >/dev/null
+          gh release edit v1.4 --repo "$GITHUB_REPOSITORY" --notes-file docs/RELEASE-NOTES.md
+          gh release edit v1.0 --repo "$GITHUB_REPOSITORY" --notes-file docs/COURSE-RELEASE-NOTES.md
+          for tag in v1.0 v1.4; do
+            has_apk="$(gh release view "$tag" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets | map(.name) | index("PocketKhata-v1.4.apk") != null')"
+            if [ "$has_apk" != true ]; then
+              gh release upload "$tag" distribution/PocketKhata-v1.4.apk --repo "$GITHUB_REPOSITORY"
+            fi
+            gh release upload "$tag" distribution/PocketKhata_Lab_Report_Abu_Musa_Roll_27.pdf --repo "$GITHUB_REPOSITORY" --clobber
+          done

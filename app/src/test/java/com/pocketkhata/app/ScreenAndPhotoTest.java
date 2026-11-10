@@ -269,7 +269,15 @@ public class ScreenAndPhotoTest {
 
     for (String name :
         new String[] {
-          "login", "home-sample", "add-expense", "add-loan", "settings", "summary", "profile"
+          "login",
+          "register",
+          "home-sample",
+          "add-expense",
+          "add-loan",
+          "details",
+          "settings",
+          "summary",
+          "profile"
         }) {
       View root;
       if (name.equals("home-sample")) root = home(false);
@@ -277,14 +285,27 @@ public class ScreenAndPhotoTest {
         int id =
             name.equals("login")
                 ? R.layout.activity_login
-                : name.equals("settings")
-                    ? R.layout.activity_settings
-                    : name.equals("summary")
-                        ? R.layout.activity_summary
-                        : name.equals("profile")
-                            ? R.layout.activity_profile
-                            : R.layout.activity_edit;
+                : name.equals("register")
+                    ? R.layout.activity_register
+                    : name.equals("details")
+                        ? R.layout.activity_detail
+                        : name.equals("settings")
+                            ? R.layout.activity_settings
+                            : name.equals("summary")
+                                ? R.layout.activity_summary
+                                : name.equals("profile")
+                                    ? R.layout.activity_profile
+                                    : R.layout.activity_edit;
         root = LayoutInflater.from(context()).inflate(id, null);
+        if (name.equals("details")) {
+          ((TextView) root.findViewById(R.id.typeLabel)).setText("Loan Given");
+          ((TextView) root.findViewById(R.id.detailAmount)).setText("৳ 800.00");
+          ((TextView) root.findViewById(R.id.detailTitle)).setText("Loan to Sample Contact");
+          ((TextView) root.findViewById(R.id.detailMeta)).setText("2026-11-10");
+          ((TextView) root.findViewById(R.id.detailStatus)).setText("Not paid back yet");
+          ((TextView) root.findViewById(R.id.detailPerson)).setText("Sample Contact\n01700000000");
+          root.findViewById(R.id.detailNote).setVisibility(View.GONE);
+        }
         if (name.equals("profile")) {
           ((TextView) root.findViewById(R.id.profileName)).setText("Sample Student");
           ((TextView) root.findViewById(R.id.profilePhone)).setText("01700000000");

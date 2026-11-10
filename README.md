@@ -2,7 +2,7 @@
 
 A Java + XML Android app for personal expenses, money lent, and money borrowed. Built for Mobile Application and Development Lab (0613-410).
 
-**[Download APK](https://raw.githubusercontent.com/MdAbuMusa1414/PocketKhata/main/distribution/PocketKhata-v1.4.apk) · [Release v1.4](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.4)**
+**[Download APK](https://raw.githubusercontent.com/MdAbuMusa1414/PocketKhata/main/distribution/PocketKhata-v1.4.apk) · [14-page lab report PDF](https://raw.githubusercontent.com/MdAbuMusa1414/PocketKhata/main/distribution/PocketKhata_Lab_Report_Abu_Musa_Roll_27.pdf) · [Release v1.4](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.4)**
 
 Repository owner: **MdAbuMusa1414**
 
@@ -16,6 +16,7 @@ Repository owner: **MdAbuMusa1414**
 - Course: Mobile App Development
 - Course Code: 0613-410
 - Submitted to: Ekramul Haque Amin
+
 ## Design and navigation
 
 PocketKhata 1.4 uses a **soft lavender, blush pink, mint and black** palette inspired by the owner’s supplied interface reference. Frosted panels, pill controls and floating navigation share the same colors as the original PK monogram (Pocket + Khata).
@@ -45,7 +46,7 @@ All / Expenses / Give a Loan / Take a Loan remain record filters on Home. Summar
 
 ## Run in Android Studio
 
-1. Install a current Android Studio version supporting Android Gradle Plugin 8.7.3, with JDK 17 and Android SDK 35.
+1. Install a current Android Studio version supporting Android Gradle Plugin 8.7.3 and Android SDK 35. Java source compatibility is 17; release builds used JDK 17, and the owner’s Windows Gradle/configuration/sync checks passed with bundled JBR 21.0.10.
 2. Open this directory (the one containing `settings.gradle`).
 3. Let Gradle sync. The Gradle 8.9 wrapper is included.
 4. `app/google-services.json` is already configured for `pocketkhata-musa`, package `com.pocketkhata.app`.
@@ -64,14 +65,14 @@ The Firebase Android configuration contains public client identifiers, not an ad
 ## Before final submission
 
 - Open the project and review/modify the code; understand the components for the viva.
-- Open this public repository in Android Studio, connect your GitHub account there and make your own meaningful modification/push. Publication so far was performed using the authorized command-line connection.
-- Add your student name and ID above.
+- The owner completed Android Studio clone/open/sync, edited the student information and pushed commit `668cf915` with merge `c80027e9`. Earlier development/release publication used the authorized cloud command-line workflow. Continue reviewing the code for the viva.
+- Verify the student information above. Roll 27 is the identifier supplied by the student; no separate university Student ID was provided.
 - Test on the actual phone using the checklist in `docs/PHONE-TEST-BN.md`.
-- Keep the published APK-attached **v1.0** Release and repository public. Do not upload the private signing backup.
-- Prepare the separate 10–15 page report when requested; no report is included yet.
+- Keep the course **v1.0** Release and repository public. That release retains the original APK and also supplies the clearly labelled current v1.4 APK/report for assessment. Do not upload the private signing backup.
+- Download and review the 14-page report PDF linked above. Its nine UI figures are native Android renders with sample data; manual test evidence is documented separately. Editable report text and the builder are in `docs/report` and `scripts/build_lab_report.py`.
 - Keep the repository public after submission.
 
-See `docs/REQUIREMENTS.md` for every requirement and `docs/ARCHITECTURE.md` for code and database details.
+See `docs/REQUIREMENTS.md` for every requirement, `docs/ARCHITECTURE.md` for implementation details and [the Bengali viva guide](docs/VIVA-BN.md) for 24 explanations and a demo sequence.
 
 ## Design previews
 

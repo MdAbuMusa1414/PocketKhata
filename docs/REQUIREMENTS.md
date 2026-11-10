@@ -24,12 +24,12 @@ Source: E-109 Final Lab Project — Instructions.pdf, four pages. The PDF says �
 | Requirement | Status / action |
 |---|---|
 | Public GitHub repository | Owner created https://github.com/MdAbuMusa1414/PocketKhata |
-| Connect from Android Studio and push from first day | Project includes Git history and configured origin. Owner has cloned/opened the project and supplied successful Android Studio sync evidence on 10 November 2026. IDE account connection, review/modification and owner commit/push remain. Earlier publication used the authorized cloud command-line connection |
+| Connect from Android Studio and push from first day | Project includes Git history and configured origin. Owner has cloned/opened the project and supplied successful Android Studio sync evidence on 10 November 2026. Owner then authenticated the JetBrains GitHub integration, edited README and pushed author-linked commit `668cf915` plus merge `c80027e9`. Earlier publication used the authorized cloud command-line connection; the exact first-day Android Studio workflow is not claimed |
 | Regular meaningful commits | Prepared history records actual development stages; continue making meaningful commits when modifying the app |
-| README with app name, student name/ID, features, run instructions | README supplied; exact student name and ID still need to be added by owner |
-| GitHub Release v1.0 with attached APK | Signed APK prepared for [Release v1.0](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.0); check the release page for the published asset |
+| README with app name, student name/ID, features, run instructions | Student information added by owner: Abu Musa, Roll 27, Batch E-109, CSE, Dhaka International University, course/instructor. Roll is labelled as supplied; a separate university Student ID was not provided |
+| GitHub Release v1.0 with attached APK | Published [Release v1.0](https://github.com/MdAbuMusa1414/PocketKhata/releases/tag/v1.0) retains the original APK; the current v1.4 APK/report are also labelled as assessment artifacts |
 | Keep repository public and do not delete after submission | Ongoing owner responsibility |
-| 10–15 page PDF report with all eight sections and actual components/alternatives/reasons | Deferred by user's explicit request; not included or claimed complete |
+| 10–15 page PDF report with all eight sections and actual components/alternatives/reasons | 14-page PDF in `distribution/PocketKhata_Lab_Report_Abu_Musa_Roll_27.pdf`; eight required sections, 44 component/group entries with alternatives/reasons and nine explicitly labelled native-render UI figures. Editable text is in `docs/report` |
 | Live demo and viva | Owner must run the phone checklist and understand the code |
 | Review and modify generated code; understand every feature | Review the Java/XML files, run the app, make your own justified changes, and prepare explanations |
 

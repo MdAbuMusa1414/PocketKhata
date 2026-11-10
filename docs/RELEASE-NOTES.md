@@ -1,9 +1,9 @@
-PocketKhata 1.4 adds **My Profile** at the upper left of Home. Choose or take a profile photo, edit your name and phone number, and view your login email. Save Profile stores these details privately under your Firebase account and refreshes the Home avatar and greeting. Email stays read-only on this screen.
+PocketKhata 1.4 provides private expense and loan records, monthly analysis and My Profile. Choose/take/remove a profile photo, edit name/phone and view the read-only login email. The reference-inspired lavender, blush, mint and black palette is shared by the PK launcher and app UI.
 
-The new reference-inspired identity uses **lavender, blush pink, mint and black** across the PK logo, launcher, cards, controls and floating navigation. Home retains separate Expenses / Loan Given / Loan Taken totals and its full searchable record history; Summary remains monthly expense analysis.
+Download **PocketKhata-v1.4.apk** and choose **Update** over the installed app. Existing app ID/signing identity, accounts, records and saved preferences are compatible. Android 8.0+.
 
-Download `PocketKhata-v1.4.apk` and choose **Update** over the installed app. Do not uninstall. Existing accounts, records and saved preferences are preserved. Android 8.0 or newer.
+The student reports all six guided phone checks work. Automated verification includes 28 passing tests, zero lint errors, Firebase privacy/persistence checks and release signature verification. Windows Gradle 8.9/project configuration and Android Studio sync passed; the student’s own README commit/push is verified in public history. Separate camera/gallery, rotation and offline edge-case results were not individually confirmed.
 
-Verification includes Android 12.1 native-layout previews, money/auth/photo/navigation/profile validation tests, live Firebase profile privacy/persistence checks, lint, release compilation and APK signature verification. A fresh check on the owner’s Android 12 / ColorOS phone is still needed, especially photo picking/camera and profile saving.
+The attached **PocketKhata_Lab_Report_Abu_Musa_Roll_27.pdf** has 14 pages and all eight assignment report sections. The nine UI figures are labelled native Android renders using sample data. A Bengali viva guide is in `docs/VIVA-BN.md`.
 
-The original APK-attached v1.0 Release remains available for the semester requirement. The report is deferred.
+The course Release v1.0 remains public with its original APK and clearly labelled current v1.4 APK/report. Current source is on main; v1.4 identifies the app release source snapshot.

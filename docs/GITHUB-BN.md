@@ -46,6 +46,10 @@ Verification: PowerShell syntax; URL-to-cache hashes matched against Gradle 8.9'
 4. **Git → Manage Remotes**-এ `origin` উপরের repository কি না দেখো। **Git → Push** দিয়ে push করো। Update/rejected message এলে আগে remote changes নিয়ে সমাধান করো; force push ব্যবহার করার প্রয়োজন নেই।
 5. Browser-এ repository খুলে নিজের পরিবর্তন ও commit দেখো।
 
-ব্যবহারকারী নিজের PC-তে Android Studio দিয়ে clone/open ও sync করেছেন। IDE-তে GitHub account সংযোগ, code review/modification ও নিজের commit/push এখনও বাকি। আগের cloud publication-কে Android Studio থেকে করা কাজ হিসেবে উল্লেখ করবে না।
+ব্যবহারকারী নিজের PC-তে Android Studio দিয়ে clone/open ও sync করেছেন এবং পরে GitHub account সংযোগ, README পরিবর্তন ও নিজের commit/push সম্পন্ন করেছেন। Code review ও viva প্রস্তুতি চালিয়ে যেতে হবে। আগের cloud publication-কে Android Studio থেকে করা কাজ হিসেবে উল্লেখ করবে না।
 
 Repository public রাখবে। Private signing key, signing password, account password, OTP বা token repository/চ্যাটে দেবে না। একই app-এর ভবিষ্যৎ update sign করতে বর্তমান signing identity প্রয়োজন।
+
+## ব্যবহারকারীর নিজের Android Studio commit/push সম্পন্ন
+
+10 November 2026-এ Abu Musa নিজের PC-র Android Studio-তে README বদলে `Add student and course information to README` message-এ commit করেন (`668cf915`)। Incoming changes merge, JetBrains GitHub login/authorization এবং Push-এর পরে public `main`-এ merge `c80027e9` এসেছে। GitHub-এ author account MdAbuMusa1414 এবং student information স্বাধীনভাবে যাচাই করা হয়েছে। এটি নতুন owner-run IDE কাজের প্রমাণ; আগের cloud development বা first-day workflow হিসেবে বর্ণনা করা হয়নি।
