@@ -20,7 +20,7 @@ Code ইতিমধ্যে এই public repository-তে আছে। APK-�
 
 ## এক ফাইলে Windows diagnostic report
 
-[Diagnose-PocketKhata.cmd ডাউনলোড](https://raw.githubusercontent.com/MdAbuMusa1414/PocketKhata/main/tools/windows/Diagnose-PocketKhata.cmd) করে চালালে Desktop-এ `PocketKhata-Diagnostic.txt` তৈরি হয়ে Notepad-এ খুলবে। Windows 11-এর Command Prompt, PowerShell এবং curl ব্যবহার করা হয়েছে। সাধারণ project location হলো `%USERPROFILE%\AndroidStudioProjects\PocketKhata`; root folder-এ script রাখলে সেই project বেছে নেবে।
+[Diagnostic ZIP ডাউনলোড](https://raw.githubusercontent.com/MdAbuMusa1414/PocketKhata/main/distribution/PocketKhata-Diagnostic.zip) করে Extract All দিয়ে ভেতরের `Diagnose-PocketKhata.cmd` চালালে Desktop-এ `PocketKhata-Diagnostic.txt` তৈরি হয়ে Notepad-এ খুলবে। Windows 11-এর Command Prompt, PowerShell এবং curl ব্যবহার করা হয়েছে। সাধারণ project location হলো `%USERPROFILE%\AndroidStudioProjects\PocketKhata`; root folder-এ script রাখলে সেই project বেছে নেবে।
 
 Report-এ local wrapper-এর URL/timeout/checksum, commit, IDE-linked project path ও Gradle configuration, standard bundled Java version, proxy environment variable আছে কি না, দুই official download URL-এর HTTP/সময় এবং সাম্প্রতিক IDE log-এর নির্দিষ্ট error label/source থাকবে। Credential values বা পূর্ণ IDE log সংগ্রহ করে না। Project/IDE settings বদলায় না এবং report স্বয়ংক্রিয়ভাবে কোথাও upload করে না। ব্যবহারকারী report দেখে নিজে chat-এ দিতে পারবেন।
 
