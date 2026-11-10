@@ -18,6 +18,14 @@ Code ইতিমধ্যে এই public repository-তে আছে। APK-�
 
 পুরোনো clone-এ **Ctrl+T → Update Project** দিয়ে পরিবর্তন নিয়ে **Try Again / Sync Project with Gradle Files** চালাও। Download এখনও আটকে গেলে browser-এ wrapper-এর official URL খুলে download হয় কি না পরীক্ষা করে network/proxy-এর সমস্যা নির্ণয় করো। এই পরিবর্তন দিয়ে এখানে নতুন করে official ZIP download, checksum verification ও `./gradlew --version` সফল হয়েছে। ব্যবহারকারীর Windows PC-তে sync-এর ফল এখনও নিশ্চিত করা বাকি।
 
+## এক ফাইলে Windows diagnostic report
+
+[Diagnose-PocketKhata.cmd ডাউনলোড](https://raw.githubusercontent.com/MdAbuMusa1414/PocketKhata/main/tools/windows/Diagnose-PocketKhata.cmd) করে চালালে Desktop-এ `PocketKhata-Diagnostic.txt` তৈরি হয়ে Notepad-এ খুলবে। Windows 11-এর Command Prompt, PowerShell এবং curl ব্যবহার করা হয়েছে। সাধারণ project location হলো `%USERPROFILE%\AndroidStudioProjects\PocketKhata`; root folder-এ script রাখলে সেই project বেছে নেবে।
+
+Report-এ local wrapper-এর URL/timeout/checksum, commit, IDE-linked project path ও Gradle configuration, standard bundled Java version, proxy environment variable আছে কি না, দুই official download URL-এর HTTP/সময় এবং সাম্প্রতিক IDE log-এর নির্দিষ্ট error label/source থাকবে। Credential values বা পূর্ণ IDE log সংগ্রহ করে না। Project/IDE settings বদলায় না এবং report স্বয়ংক্রিয়ভাবে কোথাও upload করে না। ব্যবহারকারী report দেখে নিজে chat-এ দিতে পারবেন।
+
+চারটি embedded PowerShell command-এর syntax ও synthetic XML/log সংগ্রহ PowerShell 7.4.6-এ পরীক্ষা করা হয়েছে। Test fixture-এর unrelated/private text বাদ থাকার পরীক্ষাও পাস করেছে। পুরো CMD-টি ব্যবহারকারীর Windows PC-তে এখনও চালানো হয়নি; Windows curl ফল Java/Android Studio-র network result-এর সঙ্গে মিলিয়ে ব্যাখ্যা করতে হবে।
+
 ## নিজের account থেকে অর্থপূর্ণ পরিবর্তন push করো
 
 1. **Settings → Version Control → GitHub** থেকে নিজের account-এ browser দিয়ে login করো।
