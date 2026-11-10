@@ -26,6 +26,18 @@ Report-এ local wrapper-এর URL/timeout/checksum, commit, IDE-linked project
 
 চারটি embedded PowerShell command-এর syntax ও synthetic XML/log সংগ্রহ PowerShell 7.4.6-এ পরীক্ষা করা হয়েছে। Test fixture-এর unrelated/private text বাদ থাকার পরীক্ষাও পাস করেছে। পুরো CMD-টি ব্যবহারকারীর Windows PC-তে এখনও চালানো হয়নি; Windows curl ফল Java/Android Studio-র network result-এর সঙ্গে মিলিয়ে ব্যাখ্যা করতে হবে।
 
+## রিপোর্ট পাওয়ার পর: Java দিয়ে Gradle পরীক্ষা ও প্রয়োজন হলে setup
+
+10 November 2026-এ ব্যবহারকারীর diagnostic report দেখায়: local commit `6d1f3ac`, সঠিক নতুন wrapper URL/checksum/120-second timeout, IDE-তে সঠিক project root এবং bundled Java 21। Windows curl-এর দুই official distribution HEAD probe-ই HTTP 200 পেয়েছে। IDE log সর্বশেষ 19:02-এ বদলেছে, কিন্তু diagnostic report 19:19-এ তৈরি; log-এ পুরোনো services.gradle.org URL আছে। এগুলো বর্তমান Java download সফল বা IDE cache নষ্ট প্রমাণ করে না। নতুন করে Java wrapper চালিয়ে ফল নেওয়া দরকার।
+
+[Gradle Setup ZIP](https://raw.githubusercontent.com/MdAbuMusa1414/PocketKhata/main/distribution/PocketKhata-Gradle-Setup.zip) Extract All করে `Start-Gradle-Setup.cmd` চালাও। আগে Android Studio-তে কাজ save করে সেটি স্বাভাবিকভাবে বন্ধ করো।
+
+Helper রিপোর্টে পাওয়া standard project ও bundled Java location ব্যবহার করে প্রথমে actual wrapper দিয়ে `--version` চালায়। সেটি ব্যর্থ হলেই Windows curl দিয়ে official Gradle 8.9 ZIP download করে pinned SHA-256 মেলায় এবং wrapper-এর নির্দিষ্ট cache-এ রাখে। আগে থাকা ভিন্ন ZIP backup নামে রাখে। এরপর wrapper-কে নিজে verify/unzip/install করতে দেয়; marker জাল করে না। একই Gradle 8.9 archive-এর official GitHub ও পুরোনো services URL-এর cache paths ব্যবহার করা হয়।
+
+Wrapper চালু হলে `help --no-daemon --console=plain --stacktrace` দিয়ে project/plugin configuration পরীক্ষা করে। দুটো পাস হলে Android Studio নতুন করে project খুলবে। Desktop-এর `PocketKhata-Gradle-Setup.txt`-তে fresh ফল পাওয়া যাবে; failure হলে report Notepad-এ খুলবে। Helper project source, machine-wide Java, Gradle version, credentials বা app data পরিবর্তন করে না। Automatic setup সফল হওয়া আর Android Studio sync সফল হওয়া আলাদাভাবে নিশ্চিত করতে হবে।
+
+Verification: PowerShell syntax; URL-to-cache hashes matched against Gradle 8.9's actual `PathAssembler`; invalid checksum rejection before cache writes; repeat-run behavior and preservation of an existing ZIP; actual Java wrapper invocation. A separate real official ZIP test verifies the wrapper can install from the seeded cache with Java HTTP/HTTPS network access blocked. The full Windows/Android Studio workflow still requires owner execution.
+
 ## নিজের account থেকে অর্থপূর্ণ পরিবর্তন push করো
 
 1. **Settings → Version Control → GitHub** থেকে নিজের account-এ browser দিয়ে login করো।
